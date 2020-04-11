@@ -10,3 +10,10 @@
     define('DB_NAME','news-portal6');
     define('DB_USER','admin');
     define('DB_PASSWORD','admin54321');
+
+    define('ADMIN_URL', SITE_URL."/cms");
+    define('ADMIN_ASSETS_URL', ADMIN_URL."/assets");
+    define('ADMIN_CSS_URL', ADMIN_ASSETS_URL."/css");
+    define('ADMIN_JS_URL', ADMIN_ASSETS_URL."/js");
+    define('ADMIN_IMAGES_URL', ADMIN_ASSETS_URL."/img");
+
