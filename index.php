@@ -1,4 +1,7 @@
 <?php
     require_once "config/init.php";
 
-    echo SITE_URL; 
+    $user = new User();
+    debug($user);
+
+    // echo SITE_URL; 

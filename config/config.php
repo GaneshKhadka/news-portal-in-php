@@ -17,3 +17,5 @@
     define('ADMIN_JS_URL', ADMIN_ASSETS_URL."/js");
     define('ADMIN_IMAGES_URL', ADMIN_ASSETS_URL."/img");
 
+    define('ERROR_LOG',$_SERVER['DOCUMENT_ROOT'].'/error/error.log');
+
