@@ -26,7 +26,7 @@
         }
         final protected function select($args = array(), $is_debug=false){
             try{
-                $this->sql = "SELECT";
+                $this->sql = "SELECT ";
                 if($is_debug){
                     debug($args);
                     debug($this->sql, true);
