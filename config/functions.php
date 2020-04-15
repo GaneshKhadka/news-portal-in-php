@@ -39,3 +39,7 @@
             unset($_SESSION['error']);
         }
     }
+
+    function generateRandomString($length = 100){
+        $string = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    }

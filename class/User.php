@@ -13,8 +13,7 @@
                 // "where" => " email = '".$email."' "
                 "where" => array(
                     'email' => $email,
-                    'status' => 'active',
-                    'role' => 'admin'
+                    'status' => 'active'
                 )
             );
             return $this->select($args);
