@@ -1,8 +1,11 @@
 <?php
+
    abstract class Database{
         protected $conn = null;
         protected $sql = "";
         protected $stmt = "";
+
+        protected $table = null;
 
         public function __construct()
         {
@@ -21,7 +24,22 @@
                 error_log($msg, 3, ERROR_LOG);
             }
         }
-        // function select();
+        final protected function select($args = array(), $is_debug=false){
+            try{
+                $this->sql = "SELECT";
+                if($is_debug){
+                    debug($args);
+                    debug($this->sql, true);
+                }
+
+            }catch(PDOException $e){
+                $msg = date('Y-m-d h:i A').", PDO Select: ".$e->getMessage()."\r\n";
+                error_log($msg, 3, ERROR_LOG);
+            }catch(Exception $e){
+                $msg = date('Y-m-d h:i A').", PDO Select: ".$e->getMessage()."\r\n";
+                error_log($msg, 3, ERROR_LOG);
+            }
+        }
         // function update();
         // function insert();
         // function delete();

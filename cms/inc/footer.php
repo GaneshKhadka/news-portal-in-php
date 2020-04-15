@@ -8,6 +8,11 @@
 
   <!-- Custom scripts for all pages-->
   <script src="<?php echo ADMIN_JS_URL;?>/sb-admin-2.min.js"></script>
+  <script>
+      setTimeout(function(){
+        $('.alert').slideUp();
+      }, 3000);
+  </script>
 
 </body>
 
