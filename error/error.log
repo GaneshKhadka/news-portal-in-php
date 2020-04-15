@@ -1,0 +1,1 @@
+2020-04-15 03:04 PM, PDO Select: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':email AND status = :status AND role = :role' at line 1

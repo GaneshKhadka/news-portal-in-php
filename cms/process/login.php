@@ -14,6 +14,7 @@
         }
 
         $user_info = $user->getUserByEmail($email);
+        debug($user_info);
 
         // $hash = password_hash($_POST['password'],PASSWORD_BCRYPT);
 

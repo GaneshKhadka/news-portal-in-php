@@ -8,12 +8,15 @@
         }
         public function getUserByEmail($email){
             $args = array(
-                'fields' => "",
+                // 'fields' => ["id", "name", "email"],
+                // 'fields' => "id, name, email",
                 // "where" => " email = '".$email."' "
                 "where" => array(
-                    'email' => $email 
+                    'email' => $email,
+                    'status' => 'active',
+                    'role' => 'admin'
                 )
             );
-            return $this->select($args, true);
+            return $this->select($args);
         }
     }
