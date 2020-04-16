@@ -42,4 +42,13 @@
 
     function generateRandomString($length = 100){
         $string = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $count = strlen($string);
+        $random = "";
+        for($i=0; $i< $length; $i++){
+            $posn = rand(0, $count-1);
+            $chars = $string[$posn];
+            $random .= $chars;
+        }
+        return $random;
+
     }

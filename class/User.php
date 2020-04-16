@@ -1,6 +1,7 @@
 <?php
    final class User extends Database{
 
+        use DataTraits;
         public function __construct()
         {
             parent::__construct();

@@ -25,11 +25,18 @@
                 setSession('role', $user_info[0]->role);
 
                 $token = generateRandomString(100);
+                setSession("token",$token);
+
                 if(isset($_POST['remember_me']) && !empty($_POST['remember_me'])){
                     // cookie
-                    setcookie("_au", "", time(), "/");
+                    setcookie("_au", $token, (time()+860000), "/"); //cookie set for 10 days
+                    $data = array(
+                        'remember_token' => $token
+                    );
+                    $user->updateData($data, $user_info[0]->id);
                 }
 
+                // debug($_SESSION,true);
                 redirect('../dashboard.php','success','Welcome to admin panel.');
 
             } else{
