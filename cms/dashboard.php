@@ -1,6 +1,10 @@
 <?php 
 $_title = "Admin Dashboard";
-require_once 'inc/header.php' ?>
+require_once 'inc/header.php';
+require_once 'inc/checklogin.php';
+
+
+?>
 
   <!-- Page Wrapper -->
   <div id="wrapper">

@@ -1,6 +1,12 @@
 <?php 
 $_title = "Admin Login Page";
-require_once 'inc/header.php'?>
+require_once 'inc/header.php';
+
+if(isset($_SESSION, $_SESSION['token']) && !empty($_SESSION['token'])){
+  redirect('dashboard.php','success','You are already logged in.');
+}
+
+?>
 
   <div class="container">
 

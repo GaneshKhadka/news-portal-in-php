@@ -1,4 +1,4 @@
-<!-- video 6 46 completed -->
+<!-- video 6 completed -->
 
 <!-- news-portal6@gmail.com -->
 <!-- admin123 -->
