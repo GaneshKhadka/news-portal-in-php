@@ -19,4 +19,17 @@
             );
             return $this->select($args);
         }
+
+        public function getUserByCookieToken($token){
+            $args = array(
+                // 'fields' => ["id", "name", "email"],
+                // 'fields' => "id, name, email",
+                // "where" => " email = '".$email."' "
+                "where" => array(
+                    'remember_token' => $token,
+                    'status' => 'active'
+                )
+            );
+            return $this->select($args);
+        }
     }

@@ -6,6 +6,10 @@ if(isset($_SESSION, $_SESSION['token']) && !empty($_SESSION['token'])){
   redirect('dashboard.php','success','You are already logged in.');
 }
 
+if(isset($_COOKIE, $_COOKIE['_au']) && !empty($_COOKIE['_au'])){
+  redirect('dashboard.php','success','Welcome back to admin panel.');
+}
+
 ?>
 
   <div class="container">
