@@ -25,7 +25,16 @@ require_once 'inc/checklogin.php';
         <?php flash(); ?>
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Dashboard Page</h1>
+          <h1 class="h3 mb-4 text-gray-800">
+              Category Add Form
+          </h1>
+          <hr>
+
+          <div class="row">
+              <div class="col-12">
+                  <form action="process/category.php" method="post" enctype="multipart/form-data" class="form"></form>
+              </div>
+          </div>
 
         </div>
         <!-- /.container-fluid -->
