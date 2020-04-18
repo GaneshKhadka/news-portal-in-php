@@ -32,7 +32,50 @@ require_once 'inc/checklogin.php';
 
           <div class="row">
               <div class="col-12">
-                  <form action="process/category.php" method="post" enctype="multipart/form-data" class="form"></form>
+                  <form action="process/category.php" method="post" enctype="multipart/form-data" class="form">
+                    <div class="form-group row">
+                      <label for="" class="col-sm-3">Title: </label>
+                      <div class="col-sm-9">
+                        <input type="text" id="title"required placeholder="Enter Category Title..." name="title" class="form-control form-control-sm">
+                      </div>
+                    </div> 
+                    
+                    <div class="form-group row">
+                      <label for="" class="col-sm-3">Summary: </label>
+                      <div class="col-sm-9">
+                        <textarea name="summary" id="summary" rows="5" placeholder="Enter category summary.." style="resize: none;" class="form-control form-control-sm"></textarea>
+                    </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="" class="col-sm-3">Status: </label>
+                      <div class="col-sm-9">
+                          <select name="status" id="status" required class="form-control form-control-sm">
+                            <option value="active">Active</option>
+                            <option value="inactive">In-Active</option>
+                          </select>
+                    </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="" class="col-sm-3">Image: </label>
+                      <div class="col-sm-9">
+                          <input type="file" name="image" accept="image/*" id="image"> 
+                    </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="offset-3 col-sm-9">
+                          <button class="btn btn-danger" type="reset">
+                            <i class="fa fa-trash"></i> Reset
+                          </button>
+                          <button class="btn btn-success" type="submit">
+                            <i class="fa fa-paper-plane"></i> Submit
+                          </button>
+                    </div>
+                    </div>
+
+                  </form>
               </div>
           </div>
 
