@@ -1,0 +1,3 @@
+Options -Indexes
+
+ErrorDocument 403 http://news-portal6.loc/403.html

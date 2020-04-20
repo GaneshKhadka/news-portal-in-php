@@ -19,4 +19,7 @@
             $insert_id = $this->insert($data);
             return $insert_id;
         }
+        final public function getAllRows(){
+            return $this->select(); 
+        }
     }

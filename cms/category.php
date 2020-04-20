@@ -3,8 +3,10 @@ $_title = "Admin Dashboard";
 require_once 'inc/header.php';
 require_once 'inc/checklogin.php';
 
+$category = new Category;
 
 ?>
+<link rel="stylesheet" href="<?php echo ADMIN_CSS_URL.'/datatables.min.css'?>">
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -44,6 +46,34 @@ require_once 'inc/checklogin.php';
                           <th>Created_at</th>
                           <th>Action</th>
                       </thead>
+                      <tbody>
+                          <?php 
+                            $all_rows = $category -> getAllRows();
+                            if($all_rows){
+                              foreach($all_rows as $key => $cat_info){
+                                ?>
+                                <tr>
+                                  <td><?php echo $key+1 ?></td>
+                                  <td><?php echo $cat_info -> title ?></td>
+                                  <td><?php echo $cat_info -> summary ?></td>
+                                  <td>
+                                    <span class="badge badge-<?php echo ($cat_info -> status == 'active') ? 'success' : 'danger' ?>"><?php echo ucfirst($cat_info -> status) ?></span>
+                                  </td>
+                                  <td><?php echo date("Y-m-d", strtotime($cat_info -> created_at)) ?></td>
+                                  <td>
+                                    <a href="" class="btn btn-success btn-sm" style="border-radius:50%">
+                                      <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="" class="btn btn-danger btn-sm" style="border-radius:50%">
+                                      <i class="fa fa-trash"></i>
+                                    </a>
+                                  </td>
+                                </tr>
+                                <?php
+                              }
+                            }
+                          ?>
+                      </tbody>
                   </table>
               </div>
           </div>
@@ -65,3 +95,7 @@ require_once 'inc/checklogin.php';
  <?php require_once 'inc/logoutmodal.php'?>
 
 <?php require_once 'inc/footer.php' ?>
+<script src="<?php echo ADMIN_JS_URL.'/datatables.min.js'?>"></script>
+<script>
+    $('.table').DataTable();
+</script>
