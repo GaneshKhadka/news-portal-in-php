@@ -64,7 +64,7 @@ $category = new Category;
                                     <a href="" class="btn btn-success btn-sm" style="border-radius:50%">
                                       <i class="fa fa-edit"></i>
                                     </a>
-                                    <a href="" class="btn btn-danger btn-sm" style="border-radius:50%">
+                                    <a href="process/category.php?id=<?php echo $cat_info->id; ?>" onclick="return confirm('Are you sure you want to delete this category?');"class="btn btn-danger btn-sm" style="border-radius:50%">
                                       <i class="fa fa-trash"></i>
                                     </a>
                                   </td>

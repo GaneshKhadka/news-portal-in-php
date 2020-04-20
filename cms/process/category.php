@@ -33,6 +33,23 @@
             redirect('../category.php','error','Sorry! There was problem while adding category.');
         }
 
-    }else{
+    } else if(isset($_GET['id']) && !empty($_GET['id'])){
+        $id = (int)$_GET['id'];
+        if($id <= 0){
+            redirect("../category.php","error","Invalid Category id.");
+        }
+        $cat_info = $category->getRowById($id);
+        if(!$cat_info){
+            redirect("../category.php","error","Category does not exists or has been already deleted.");
+        }
+
+        $del = $category -> deleteRowById($id);
+        if($del){
+            deleteImage($cat_info[0]->image,"category");
+            redirect("../category.php",'success','Category deleted successfully.');
+        }else{
+            redirect("../category.php",'error','Category could not be deleted at this moment.');
+        }
+    } else {
         redirect("../category.php","error","Please add data first.");
     }

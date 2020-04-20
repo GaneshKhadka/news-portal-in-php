@@ -22,4 +22,21 @@
         final public function getAllRows(){
             return $this->select(); 
         }
+
+        final public function getRowById($id){
+            $args = array(
+                'where' => array(
+                    'id' => $id
+                )
+            );
+            return $this->select($args);
+        }
+        final public function deleteRowById($id){
+            $args = array(
+                'where' => array(
+                    'id' => $id
+                )
+            );
+            return $this->delete($args);
+        }
     }

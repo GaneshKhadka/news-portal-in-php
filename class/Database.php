@@ -271,5 +271,65 @@
                 error_log($msg, 3, ERROR_LOG);
             }
         }
-        // function delete();
+        final protected function delete($args = array(), $is_debug = false){
+            try{
+                $this->sql = "DELETE FROM ";
+
+                if(!isset($this->table) || $this->table == null){
+                    throw new Exception("Table not set.");
+                }
+
+                $this->sql .= $this->table;
+
+                /** WHERE OPERAION */
+                if(isset($args['where']) && !empty($args['where'])){
+                    if(is_string($args['where'])){
+
+                        $this->sql .= " WHERE ".$args['where'];
+
+                    } else{
+                        $temp = array();
+                        foreach($args['where'] as $column_name => $value){
+                            $str = $column_name." = :".$column_name;
+                            $temp[] = $str;
+                        }
+                        $this->sql .= " WHERE ".implode(" AND ", $temp);
+                    }
+                }
+                /** WHERE OPERAION */
+
+                if($is_debug){
+                    debug($args);
+                    debug($this->sql, true);
+                }
+
+                $this->stmt = $this->conn->prepare($this->sql);
+
+                if(isset($args['where']) && !empty($args['where']) && is_array($args['where'])){
+                    foreach($args['where'] as $column_name => $value){
+                        if(is_int($value)){
+                            $param = PDO::PARAM_INT;
+                        } else if(is_bool($value)){
+                            $param = PDO::PARAM_BOOL;
+                        } else{
+                            $param = PDO::PARAM_STR;
+                        }
+
+                        if(isset($param)){
+                            $this->stmt->bindValue(":".$column_name,$value,$param);
+                        }
+                    }
+                }
+
+
+               return $this->stmt->execute();
+               
+            }catch(PDOException $e){
+                $msg = date('Y-m-d h:i A').", PDO Delete: ".$e->getMessage()."\r\n";
+                error_log($msg, 3, ERROR_LOG);
+            }catch(Exception $e){
+                $msg = date('Y-m-d h:i A').", PDO Delete: ".$e->getMessage()."\r\n";
+                error_log($msg, 3, ERROR_LOG);
+            }
+        }
     }

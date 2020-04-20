@@ -92,3 +92,15 @@
             return null;
         }
     }
+
+    function deleteImage($image_name, $dir){
+        if($image_name != null){
+            if(file_exists(UPLOAD_PATH.$dir."/".$image_name)){
+                return unlink(UPLOAD_PATH.$dir."/".$image_name);
+            } else {
+                return null;
+            }
+        }else{
+            return null;
+        }
+    }
