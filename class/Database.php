@@ -204,7 +204,72 @@
                 error_log($msg, 3, ERROR_LOG);
             }
         }
-        // function update();
-        // function insert();
+        final protected function insert($data = array(), $is_debug=false){
+            try{
+                $this->sql = "INSERT INTO ";
+
+                if(!isset($this->table) || $this->table == null){
+                    throw new Exception("Table not set.");
+                }
+
+                $this->sql .= $this->table." SET ";
+
+                if(!isset($data) || empty($data)){
+                    throw new Exception('Data not set for Update.');
+                } else{
+                    if(is_string($data)){
+                        $this->sql .= $data;
+                    }else{
+                        $temp = array();
+                        foreach($data as $column_name => $value){
+                            $str = $column_name." = :_".$column_name;
+                            $temp[] = $str;
+                        }
+                        $this->sql .= implode(", ", $temp);
+                    }
+                }
+
+                /** JOIN OPERAION */
+                /** JOIN OPERAION */
+
+
+                if($is_debug){
+                    debug($data);
+                    debug($this->sql, true);
+                }
+
+                $this->stmt = $this->conn->prepare($this->sql);
+
+
+                if(isset($data) && !empty($data) && is_array($data)){
+                    foreach($data as $column_name => $value){
+                        if(is_int($value)){
+                            $param = PDO::PARAM_INT;
+                        } else if(is_bool($value)){
+                            $param = PDO::PARAM_BOOL;
+                        } else{
+                            $param = PDO::PARAM_STR;
+                        }
+
+                        if(isset($param)){
+                            $this->stmt->bindValue(":_".$column_name,$value,$param);
+                        }
+                    }
+                }
+
+                $this->stmt->execute();
+                return $this->conn->lastInsertId();
+                // $data = $this->stmt->fetchAll(PDO::FETCH_OBJ);
+                // return $data;
+
+
+            }catch(PDOException $e){
+                $msg = date('Y-m-d h:i A').", PDO Insert: ".$e->getMessage()."\r\n";
+                error_log($msg, 3, ERROR_LOG);
+            }catch(Exception $e){
+                $msg = date('Y-m-d h:i A').", PDO Insert: ".$e->getMessage()."\r\n";
+                error_log($msg, 3, ERROR_LOG);
+            }
+        }
         // function delete();
     }

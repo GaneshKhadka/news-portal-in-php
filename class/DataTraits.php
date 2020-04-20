@@ -14,4 +14,9 @@
                 return false;
             }
         }
+
+        final public function insertData($data){
+            $insert_id = $this->insert($data);
+            return $insert_id;
+        }
     }

@@ -19,3 +19,7 @@
 
     define('ERROR_LOG',$_SERVER['DOCUMENT_ROOT'].'/error/error.log');
 
+    define('ALLOWED_IMAGES_EXTS', array('jpg','jpeg','png','gif'));
+
+    define('UPLOAD_PATH',$_SERVER['DOCUMENT_ROOT'].'/uploads/');
+

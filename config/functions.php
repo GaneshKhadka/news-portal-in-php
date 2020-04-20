@@ -50,5 +50,45 @@
             $random .= $chars;
         }
         return $random;
+    }
 
+    function sanitize($str){
+        $str = strip_tags($str);
+        $str = rtrim($str);
+        return $str;
+    }
+
+    function uploadImage($image,$dir){
+        if($image['error'] == 0){
+            // debug('here',true);
+            if($image['size'] <= 3000000){
+                $ext = pathinfo($image['name'],PATHINFO_EXTENSION);
+                if(in_array(strtolower($ext), ALLOWED_IMAGES_EXTS)){
+                    //allowed
+            // debug('here',true);
+    
+                    $path = UPLOAD_PATH.$dir;
+                    if(!is_dir($path)){
+                        mkdir($path, 0777, true);
+                    }
+    
+                    $image_name = ucfirst($dir)."-".date('Ymdhis').rand(0,999).".".$ext;
+                    // debug($image_name,true);
+                    $success = move_uploaded_file($image['tmp_name'],$path."/".$image_name);
+                    // debug('here',true);
+                    if($success){
+                        return $image_name;
+                    }else{
+                        return null;
+                    }
+    
+                }else{
+                    return null;
+                }
+            }else{
+                return null;
+            }
+        }else{
+            return null;
+        }
     }
