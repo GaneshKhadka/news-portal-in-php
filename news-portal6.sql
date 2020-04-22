@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 22, 2020 at 05:59 PM
+-- Generation Time: Apr 22, 2020 at 10:30 PM
 -- Server version: 5.7.29-0ubuntu0.18.04.1
 -- PHP Version: 7.4.3
 
@@ -47,6 +47,55 @@ INSERT INTO `categories` (`id`, `title`, `summary`, `image`, `status`, `added_by
 (4, 'news', 'All news', 'Category-20200422081616282.png', 'active', 1, '2020-04-20 10:34:26', '2020-04-22 08:16:16'),
 (5, 'hello', 'hello world', 'Category-20200422081725535.png', 'active', 1, '2020-04-22 08:16:46', '2020-04-22 08:17:25'),
 (6, 'sports', 'Reiciendis voluptate', NULL, 'active', 1, '2020-04-22 13:44:23', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `galleries`
+--
+
+CREATE TABLE `galleries` (
+  `id` int(11) NOT NULL,
+  `title` text COLLATE utf8mb4_unicode_ci,
+  `summary` text COLLATE utf8mb4_unicode_ci,
+  `image` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci DEFAULT 'inactive',
+  `added_by` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `galleries`
+--
+
+INSERT INTO `galleries` (`id`, `title`, `summary`, `image`, `status`, `added_by`, `created_at`, `updated_at`) VALUES
+(1, 'Est sit deserunt do', 'Sequi esse dolor deb', 'Gallery-20200422100640814.png', 'inactive', 1, '2020-04-22 22:06:40', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gallery_images`
+--
+
+CREATE TABLE `gallery_images` (
+  `id` int(11) NOT NULL,
+  `gallery_id` int(11) DEFAULT NULL,
+  `image` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `gallery_images`
+--
+
+INSERT INTO `gallery_images` (`id`, `gallery_id`, `image`) VALUES
+(1, 1, 'Gallery-20200422100640683.png'),
+(2, 1, 'Gallery-2020042210064082.png'),
+(3, 1, 'Gallery-20200422100640858.png'),
+(4, 1, 'Gallery-20200422100640114.png'),
+(5, 1, 'Gallery-20200422100640640.png'),
+(6, 1, 'Gallery-20200422100640131.png'),
+(7, 1, 'Gallery-20200422100640570.png');
 
 -- --------------------------------------------------------
 
@@ -104,7 +153,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `role`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'news-portal6@gmail.com', '$2y$10$kQgFxtrGWc7NUE6j3NA7LOGlYc9pfuR0PdevBkTytIGRCxmRA4BSa', 'VVIs33pqsds5TyFfdHXv3drskuqTfDCWunZ9yZ1S4ro59cTzYvYDuOUJOCoLVuW0aLIwATqYl8khLLT55hJFrCcLMgagmQliwnn6', 'admin', 'active', '2020-04-12 12:29:35', '2020-04-22 17:50:48'),
+(1, 'Admin', 'news-portal6@gmail.com', '$2y$10$kQgFxtrGWc7NUE6j3NA7LOGlYc9pfuR0PdevBkTytIGRCxmRA4BSa', 'vl7jMVX9WJHOx4PeGraBzTokFkvbnUf5jGL7wVvOxwcT8LEUw1FvAnwIbuXzMocm1wX4IO2NEFYhOLbISvXEOvOwg4R083KQnlOq', 'admin', 'active', '2020-04-12 12:29:35', '2020-04-22 21:31:03'),
 (2, 'Reporter', 'reporternews-portal6@gmail.com', '$2y$10$kQgFxtrGWc7NUE6j3NA7LOGlYc9pfuR0PdevBkTytIGRCxmRA4BSa', '', 'reporter', 'active', '2020-04-12 12:29:35', '2020-04-22 14:54:39');
 
 --
@@ -116,6 +165,19 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `role`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `galleries`
+--
+ALTER TABLE `galleries`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `gallery_images`
+--
+ALTER TABLE `gallery_images`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `gallery_id` (`gallery_id`);
 
 --
 -- Indexes for table `news`
@@ -141,6 +203,16 @@ ALTER TABLE `users`
 ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
+-- AUTO_INCREMENT for table `galleries`
+--
+ALTER TABLE `galleries`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `gallery_images`
+--
+ALTER TABLE `gallery_images`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
@@ -153,6 +225,12 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `gallery_images`
+--
+ALTER TABLE `gallery_images`
+  ADD CONSTRAINT `gallery_images_ibfk_1` FOREIGN KEY (`gallery_id`) REFERENCES `galleries` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `news`

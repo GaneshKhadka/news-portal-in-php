@@ -1,2 +1,4 @@
 2020-04-15 03:04 PM, PDO Select: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':email AND status = :status AND role = :role' at line 1
 2020-04-16 08:10 PM, PDO Select: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'remember_me' in 'field list'
+2020-04-22 08:12 PM, PDO Select: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'news-portal6.galleries' doesn't exist
+2020-04-22 08:12 PM, PDO Select: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'news-portal6.galleries' doesn't exist
