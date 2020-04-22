@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 18, 2020 at 03:26 PM
+-- Generation Time: Apr 22, 2020 at 08:22 AM
 -- Server version: 5.7.29-0ubuntu0.18.04.1
 -- PHP Version: 7.4.3
 
@@ -37,6 +37,16 @@ CREATE TABLE `categories` (
   `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `title`, `summary`, `image`, `status`, `added_by`, `created_at`, `updated_at`) VALUES
+(2, 'In est reprehenderit', 'Alias maxime aut omn', NULL, 'active', 1, '2020-04-19 13:08:39', NULL),
+(3, 'Aut maiores anim fug', 'Consequatur Ut vero', 'Category-2020041901121524.png', 'inactive', 1, '2020-04-19 13:12:15', NULL),
+(4, 'news', 'All news', 'Category-20200422081616282.png', 'active', 1, '2020-04-20 10:34:26', '2020-04-22 08:16:16'),
+(5, 'hello', 'hello world', 'Category-20200422081725535.png', 'active', 1, '2020-04-22 08:16:46', '2020-04-22 08:17:25');
+
 -- --------------------------------------------------------
 
 --
@@ -60,7 +70,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `role`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'news-portal6@gmail.com', '$2y$10$kQgFxtrGWc7NUE6j3NA7LOGlYc9pfuR0PdevBkTytIGRCxmRA4BSa', '4U9mEkqgpM8JLEaL8cHO4EAi3cOxhoZuTTD7CS2BoNNfGZ2pLBmn0V4mfFIN3vBNDY827kGaDoQOcQXTImD1RG06fFGyHy71ffkd', 'admin', 'active', '2020-04-12 12:29:35', '2020-04-18 14:38:28');
+(1, 'Admin', 'news-portal6@gmail.com', '$2y$10$kQgFxtrGWc7NUE6j3NA7LOGlYc9pfuR0PdevBkTytIGRCxmRA4BSa', 'YaAMHIM3YI6PQFwVJWU6ohNwsqmB44oGxct5kXJoo3mul4wAcHMAOxUI8XrZnf9nATMwfmyO52Al8vhLF5pbHpDMR4Gf8aN9FcLH', 'admin', 'active', '2020-04-12 12:29:35', '2020-04-22 07:31:17');
 
 --
 -- Indexes for dumped tables
@@ -86,7 +96,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `users`
 --
