@@ -1,6 +1,6 @@
 <?php
     function debug($data,$is_exit = false){
-        echo "<pre>";
+        echo "<pre style='background: #ffffff;'>";
         print_r($data);
         echo "</pre>";
         if($is_exit == true){

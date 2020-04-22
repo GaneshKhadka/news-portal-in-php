@@ -22,4 +22,5 @@
     define('ALLOWED_IMAGES_EXTS', array('jpg','jpeg','png','gif'));
 
     define('UPLOAD_PATH',$_SERVER['DOCUMENT_ROOT'].'/uploads/');
+    define("UPLOAD_URL", SITE_URL.'/uploads/');
 
