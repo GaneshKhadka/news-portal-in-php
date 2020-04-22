@@ -18,6 +18,8 @@ if(isset($_GET, $_GET['id']) && !empty($_GET['id'])){
 }
 ?>
 
+<link rel="stylesheet" href="<?php echo ADMIN_CSS_URL.'/summernote-bs4.min.css' ?>"
+
   <!-- Page Wrapper -->
   <div id="wrapper">
 
@@ -55,8 +57,84 @@ if(isset($_GET, $_GET['id']) && !empty($_GET['id'])){
                     <div class="form-group row">
                       <label for="" class="col-sm-3">Summary: </label>
                       <div class="col-sm-9">
-                        <textarea name="summary" id="summary" rows="5" placeholder="Enter news summary.." style="resize: none;" class="form-control form-control-sm"><?php echo @$news_info[0]->summary; ?></textarea>
+                        <textarea name="summary" id="summary" required rows="5" placeholder="Enter news summary.." style="resize: none;" class="form-control form-control-sm"><?php echo @$news_info[0]->summary; ?></textarea>
                     </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="" class="col-sm-3">Description: </label>
+                      <div class="col-sm-9">
+                        <textarea name="description" id="description" rows="5" placeholder="Enter news description.." style="resize: none;" class="form-control form-control-sm"><?php echo @$news_info[0]->summary; ?></textarea>
+                    </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="" class="col-sm-3">Category: </label>
+                      <div class="col-sm-9">
+                          <select name="cat_id" id="cat_id" required class="form-control form-control-sm">
+                            <option value="" disabled selected>-- Select any one --</option>
+                            <?php 
+                                $category = new Category;
+                                $all_cats = $category->getAllRows();
+                                if($all_cats){
+                                    foreach($all_cats as $cat_info){
+                                        ?>
+                                          <option value="<?php echo $cat_info->id?>" <?php echo (isset($news_info) && $news_info[0]->cat_id == $cat_info->id) ? 'selected' : '' ?>>
+                                          <?php echo $cat_info->title; ?>
+                                        </option>
+                                        <?php
+                                    }
+                                }
+                            ?>
+                          </select>
+                    </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="" class="col-sm-3">States: </label>
+                      <div class="col-sm-9">
+                          <select name="state" id="state" required class="form-control form-control-sm">
+                              <?php 
+                                foreach($state as $db_key => $state_name){
+                                    ?>
+                                      <option value="<?php echo $db_key ?>" <?php echo (isset($news_info) && $news_info[0]->state == $db_key) ? 'selected' : '' ?>>
+                                        <?php echo $state_name ?>
+                                    </option>
+                                    <?php
+                                }
+                              ?>
+                          </select>
+                    </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="" class="col-sm-3">Location: </label>
+                      <div class="col-sm-9">
+                        <input type="text" id="location" value="<?php echo @$news_info[0]->location; ?>" placeholder="Enter News Location..." name="location" class="form-control form-control-sm">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="" class="col-sm-3">Source: </label>
+                      <div class="col-sm-9">
+                        <input type="text" id="source" value="<?php echo @$news_info[0]->source; ?>" placeholder="Enter News Source..." name="source" class="form-control form-control-sm">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="" class="col-sm-3">Is featured: </label>
+                      <div class="col-sm-9">
+                        <input type="checkbox" name="is_featured" value="1"> Yes
+                    </div>
+                    </div>
+
+                    
+
+                    <div class="form-group row">
+                      <label for="" class="col-sm-3">Date: </label>
+                      <div class="col-sm-9">
+                        <input type="date" id="news_date" value="<?php echo @$news_info[0]->news_date; ?>" required placeholder="Enter News Title..." name="news_date" class="form-control form-control-sm">
+                      </div>
                     </div>
 
                     <div class="form-group row">
@@ -68,6 +146,29 @@ if(isset($_GET, $_GET['id']) && !empty($_GET['id'])){
                           </select>
                     </div>
                     </div>
+
+                    <div class="form-group row">
+                      <label for="" class="col-sm-3">Reporter: </label>
+                      <div class="col-sm-9">
+                          <select name="reporter_id" id="reporter_id" required class="form-control form-control-sm">
+                            <option value="" disabled selected>-- Select any one --</option>
+                            <?php 
+                                $user = new User;
+                                $all_reporter = $user->getUserByType('reporter');
+                                if($all_reporter){
+                                    foreach($all_reporter as $user_info){
+                                        ?>
+                                          <option value="<?php echo $user_info->id?>" <?php echo (isset($news_info) && $news_info[0]->reporter_id == $user_info->id) ? 'selected' : '' ?>>
+                                          <?php echo $user_info->name; ?>
+                                        </option>
+                                        <?php
+                                    }
+                                }
+                            ?>
+                          </select>
+                    </div>
+                    </div>
+
 
                     <div class="form-group row">
                       <label for="" class="col-sm-3">Image: </label>
@@ -87,7 +188,7 @@ if(isset($_GET, $_GET['id']) && !empty($_GET['id'])){
 
                     <div class="form-group row">
                       <div class="offset-3 col-sm-9">
-                        <input type="hidden" name="cat_id" value="<?php echo @$news_info[0]->id?>">
+                        <input type="hidden" name="news_id" value="<?php echo @$news_info[0]->id?>">
                         <input type="hidden" name="old_image" value="<?php echo @$news_info[0]->image?>">
                           <button class="btn btn-danger" type="reset">
                             <i class="fa fa-trash"></i> Reset
@@ -119,3 +220,11 @@ if(isset($_GET, $_GET['id']) && !empty($_GET['id'])){
  <?php require_once 'inc/logoutmodal.php'?>
 
 <?php require_once 'inc/footer.php' ?>
+
+<script src="<?php echo ADMIN_JS_URL.'/summernote-bs4.min.js'?>"></script>
+
+<script>
+    $('#description').summernote({
+        height: 200
+    });
+</script>

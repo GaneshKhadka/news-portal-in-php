@@ -32,4 +32,13 @@
             );
             return $this->select($args);
         }
+
+        public function getUserByType($role){
+            $args = array(
+                'where' => array(
+                    'role' => $role
+                )
+            );
+            return $this->select($args);
+        }
     }

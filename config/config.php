@@ -24,3 +24,15 @@
     define('UPLOAD_PATH',$_SERVER['DOCUMENT_ROOT'].'/uploads/');
     define("UPLOAD_URL", SITE_URL.'/uploads/');
 
+    $state = array(
+        'all' => 'All State News',
+        'state1' => 'State 1',
+        'state2' => 'State 2',
+        'state3' => 'Bagmati',
+        'state4' => 'Gandaki',
+        'state5' => 'State 5',
+        'state6' => 'Karnali',
+        'state7' => 'Sudur Paschim',
+
+    );
+
