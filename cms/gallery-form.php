@@ -4,6 +4,7 @@ require_once 'inc/header.php';
 require_once 'inc/checklogin.php';
 
 $gallery = new Gallery;
+$gallery_images = new GalleryImages;
 $act = "add";
 if(isset($_GET, $_GET['id']) && !empty($_GET['id'])){
     $act = "update";
@@ -15,6 +16,8 @@ if(isset($_GET, $_GET['id']) && !empty($_GET['id'])){
     if(!$gallery_info){
       redirect('./gallery.php','error',"Gallery does not exists or has been already deleted.");
     }
+
+    $all_images = $gallery_images->getAllGalleryImages($id);
 }
 ?>
 
@@ -90,9 +93,27 @@ if(isset($_GET, $_GET['id']) && !empty($_GET['id'])){
                       <label for="" class="col-sm-3">Related Images: </label>
                       <div class="col-sm-4">
                           <input type="file" name="related_images[]" multiple accept="image/*" id="image"> 
+                    </div> 
                     </div>
-                    
-                    </div>
+
+                    <?php 
+                      if(isset($all_images) && !empty($all_images)){
+                        ?>
+                        <div class="form-group row">
+                          <?php 
+                            foreach($all_images as $gallery_image){
+                              ?>
+                              <div class="col-3">
+                                <img src="<?php echo UPLOAD_URL.'/gallery/'.$gallery_image->image ?>" class="img img-fluid img-thumbnail">
+                                <input type="checkbox" value="<?php echo $gallery_image->image?>" name="del_image[]"> Delete
+                              </div>
+                              <?php
+                            }
+                          ?>
+                        </div>
+                        <?php
+                      }
+                    ?>
 
                     <div class="form-group row">
                       <div class="offset-3 col-sm-9">
@@ -104,7 +125,7 @@ if(isset($_GET, $_GET['id']) && !empty($_GET['id'])){
                           <button class="btn btn-success" type="submit">
                             <i class="fa fa-paper-plane"></i> Submit
                           </button>
-                    </div>
+                       </div>
                     </div>
 
                   </form>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 22, 2020 at 10:30 PM
+-- Generation Time: Apr 23, 2020 at 09:52 AM
 -- Server version: 5.7.29-0ubuntu0.18.04.1
 -- PHP Version: 7.4.3
 
@@ -65,13 +65,6 @@ CREATE TABLE `galleries` (
   `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `galleries`
---
-
-INSERT INTO `galleries` (`id`, `title`, `summary`, `image`, `status`, `added_by`, `created_at`, `updated_at`) VALUES
-(1, 'Est sit deserunt do', 'Sequi esse dolor deb', 'Gallery-20200422100640814.png', 'inactive', 1, '2020-04-22 22:06:40', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -83,19 +76,6 @@ CREATE TABLE `gallery_images` (
   `gallery_id` int(11) DEFAULT NULL,
   `image` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `gallery_images`
---
-
-INSERT INTO `gallery_images` (`id`, `gallery_id`, `image`) VALUES
-(1, 1, 'Gallery-20200422100640683.png'),
-(2, 1, 'Gallery-2020042210064082.png'),
-(3, 1, 'Gallery-20200422100640858.png'),
-(4, 1, 'Gallery-20200422100640114.png'),
-(5, 1, 'Gallery-20200422100640640.png'),
-(6, 1, 'Gallery-20200422100640131.png'),
-(7, 1, 'Gallery-20200422100640570.png');
 
 -- --------------------------------------------------------
 
@@ -153,7 +133,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `role`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'news-portal6@gmail.com', '$2y$10$kQgFxtrGWc7NUE6j3NA7LOGlYc9pfuR0PdevBkTytIGRCxmRA4BSa', 'vl7jMVX9WJHOx4PeGraBzTokFkvbnUf5jGL7wVvOxwcT8LEUw1FvAnwIbuXzMocm1wX4IO2NEFYhOLbISvXEOvOwg4R083KQnlOq', 'admin', 'active', '2020-04-12 12:29:35', '2020-04-22 21:31:03'),
+(1, 'Admin', 'news-portal6@gmail.com', '$2y$10$kQgFxtrGWc7NUE6j3NA7LOGlYc9pfuR0PdevBkTytIGRCxmRA4BSa', 'F8Jlao5UU6Cyvuiq42AlrbWqSUI0NgieZ5MOQMlw8xPzgaNhhlQ6FwaQbFJA6wgqX657E9SSRC0PtsuLXkjl6Cn7H2XdjwJFeXZg', 'admin', 'active', '2020-04-12 12:29:35', '2020-04-23 07:57:04'),
 (2, 'Reporter', 'reporternews-portal6@gmail.com', '$2y$10$kQgFxtrGWc7NUE6j3NA7LOGlYc9pfuR0PdevBkTytIGRCxmRA4BSa', '', 'reporter', 'active', '2020-04-12 12:29:35', '2020-04-22 14:54:39');
 
 --

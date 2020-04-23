@@ -72,6 +72,16 @@
                 }
             }
 
+            if(isset($_POST['del_image']) && !empty($_POST['del_image'])){
+                foreach($_POST['del_image'] as $del_image){
+                    $gallery_imags = new GalleryImages;
+                    $success = $gallery_imags->deleteImageByName($del_image);
+                    if($success){
+                        deleteImage($del_image, 'gallery');
+                    }
+                }
+            }
+
             redirect('../gallery.php','success','Gallery '.$act.'ed successfully.');
         } else {
             redirect('../gallery.php','error','Sorry! There was problem while '.$act.'ing gallery.');
@@ -82,14 +92,23 @@
         if($id <= 0){
             redirect("../gallery.php","error","Invalid Gallery id.");
         }
-        $cat_info = $gallery->getRowById($id);
-        if(!$cat_info){
+        $gallery_info = $gallery->getRowById($id);
+        if(!$gallery_info){
             redirect("../gallery.php","error","Gallery does not exists or has been already deleted.");
         }
 
+        $gallery_images = new GalleryImages;
+        $all_images = $gallery_images->getAllGalleryImages($id);
         $del = $gallery -> deleteRowById($id);
+
         if($del){
-            deleteImage($cat_info[0]->image,"gallery");
+            deleteImage($gallery_info[0]->image,"gallery");
+
+            if($all_images){
+                foreach($all_images as $del_images){
+                    deleteImage($del_images->image, 'gallery');
+                }
+            }
             redirect("../gallery.php",'success','Gallery deleted successfully.');
         }else{
             redirect("../gallery.php",'error','Gallery could not be deleted at this moment.');
