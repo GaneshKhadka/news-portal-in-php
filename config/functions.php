@@ -104,3 +104,12 @@
             return null;
         }
     }
+
+    function getYoutubeVideoIdFromUrl($url){
+        preg_match("#([\/|\?|&]vi?[\/|=]|youtu\.be\/|embed\/)([a-zA-Z0-9_-]+)#", $url, $matches);
+        if(isset($matches[2])){
+            return $matches[2];
+        }else{
+            return false;
+        }
+    }

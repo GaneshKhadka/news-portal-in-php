@@ -46,7 +46,7 @@
 
 
 <li class="nav-item">
-  <a class="nav-link" href="index.html">
+  <a class="nav-link" href="video.php">
     <i class="fas fa-fw fa-video"></i>
     <span>Videos Manager</span></a>
 </li>

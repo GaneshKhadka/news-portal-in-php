@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 23, 2020 at 09:52 AM
+-- Generation Time: Apr 23, 2020 at 12:29 PM
 -- Server version: 5.7.29-0ubuntu0.18.04.1
 -- PHP Version: 7.4.3
 
@@ -133,8 +133,33 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `role`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'news-portal6@gmail.com', '$2y$10$kQgFxtrGWc7NUE6j3NA7LOGlYc9pfuR0PdevBkTytIGRCxmRA4BSa', 'F8Jlao5UU6Cyvuiq42AlrbWqSUI0NgieZ5MOQMlw8xPzgaNhhlQ6FwaQbFJA6wgqX657E9SSRC0PtsuLXkjl6Cn7H2XdjwJFeXZg', 'admin', 'active', '2020-04-12 12:29:35', '2020-04-23 07:57:04'),
+(1, 'Admin', 'news-portal6@gmail.com', '$2y$10$kQgFxtrGWc7NUE6j3NA7LOGlYc9pfuR0PdevBkTytIGRCxmRA4BSa', 'WFouto8XrdUbxFJhvpE1pf3TeMkBg194GjwhtEcihMcsfHjwAEDCLtfXtRsbqeR7B2VOUcohV4DhRTiruxfSi0FdUmTJDj0Y8l5f', 'admin', 'active', '2020-04-12 12:29:35', '2020-04-23 10:06:54'),
 (2, 'Reporter', 'reporternews-portal6@gmail.com', '$2y$10$kQgFxtrGWc7NUE6j3NA7LOGlYc9pfuR0PdevBkTytIGRCxmRA4BSa', '', 'reporter', 'active', '2020-04-12 12:29:35', '2020-04-22 14:54:39');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `videos`
+--
+
+CREATE TABLE `videos` (
+  `id` int(11) NOT NULL,
+  `title` text COLLATE utf8mb4_unicode_ci,
+  `summary` text COLLATE utf8mb4_unicode_ci,
+  `link` text COLLATE utf8mb4_unicode_ci,
+  `video_id` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci DEFAULT 'inactive',
+  `added_by` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `videos`
+--
+
+INSERT INTO `videos` (`id`, `title`, `summary`, `link`, `video_id`, `status`, `added_by`, `created_at`, `updated_at`) VALUES
+(2, 'hello', 'hello world', 'https://www.youtube.com/watch?v=Zscnwgo-0w0', 'Zscnwgo-0w0', 'inactive', 1, '2020-04-23 11:45:16', '2020-04-23 11:46:04');
 
 --
 -- Indexes for dumped tables
@@ -174,6 +199,12 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `videos`
+--
+ALTER TABLE `videos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -201,6 +232,11 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `videos`
+--
+ALTER TABLE `videos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
