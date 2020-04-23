@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 23, 2020 at 12:29 PM
+-- Generation Time: Apr 23, 2020 at 10:39 PM
 -- Server version: 5.7.29-0ubuntu0.18.04.1
 -- PHP Version: 7.4.3
 
@@ -133,8 +133,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `role`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'news-portal6@gmail.com', '$2y$10$kQgFxtrGWc7NUE6j3NA7LOGlYc9pfuR0PdevBkTytIGRCxmRA4BSa', 'WFouto8XrdUbxFJhvpE1pf3TeMkBg194GjwhtEcihMcsfHjwAEDCLtfXtRsbqeR7B2VOUcohV4DhRTiruxfSi0FdUmTJDj0Y8l5f', 'admin', 'active', '2020-04-12 12:29:35', '2020-04-23 10:06:54'),
-(2, 'Reporter', 'reporternews-portal6@gmail.com', '$2y$10$kQgFxtrGWc7NUE6j3NA7LOGlYc9pfuR0PdevBkTytIGRCxmRA4BSa', '', 'reporter', 'active', '2020-04-12 12:29:35', '2020-04-22 14:54:39');
+(1, 'Admin', 'news-portal6@gmail.com', '$2y$10$d7VS1iMfEWDZiTjyIQ8j6uhXZyr9mdb0xpdhiQGubD2.b8rlEFbwm', NULL, 'admin', 'active', '2020-04-12 12:29:35', '2020-04-23 22:37:21'),
+(2, 'Reporter', 'reporternews-portal6@gmail.com', '$2y$10$C2QvjR0z/mVYlHvHpBZ6AeGn0ZhKrdAX8afJ/lSVdf8e/neF771Yu', '', 'reporter', 'active', '2020-04-12 12:29:35', '2020-04-23 22:25:11'),
+(4, 'Gillian Fulton', 'xucafyl@mailinator.net', '$2y$10$wwTeKKamY/LuzA8KmQdWgO1TL0fzEAUrvm71LF3.ivy.z2lvYWMX2', NULL, 'reporter', 'inactive', '2020-04-23 22:05:25', NULL);
 
 -- --------------------------------------------------------
 
@@ -217,12 +218,12 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `galleries`
 --
 ALTER TABLE `galleries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `gallery_images`
 --
 ALTER TABLE `gallery_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `news`
 --
@@ -232,7 +233,7 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `videos`
 --

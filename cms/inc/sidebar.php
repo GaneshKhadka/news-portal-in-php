@@ -54,7 +54,7 @@
 
 
 <li class="nav-item">
-  <a class="nav-link" href="index.html">
+  <a class="nav-link" href="users.php">
     <i class="fas fa-fw fa-users"></i>
     <span>Users Manager</span></a>
 </li>
