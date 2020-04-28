@@ -1,6 +1,8 @@
 <?php
     require "../../config/init.php";
     require "../inc/checklogin.php";
+    require_once '../inc/admin.php';
+
 
     // debug($_POST);
     // debug($_FILES);

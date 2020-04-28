@@ -66,6 +66,23 @@
                 }
                 /** WHERE OPERAION */
 
+                /**Group by */
+                /**Group by */
+
+
+                /** ORDER BY */
+                if(isset($args['order_by']) && !empty($args['order_by'])){
+                    $this->sql .= " ORDER BY ".$args['order_by'];
+                } else {
+                    $this->sql .= " ORDER BY ".$this->table.".id DESC";
+                }
+                /** ORDER BY */
+
+                /** LIMIT */
+                if(isset($args['limit']) && !empty($args['limit'])){
+                    $this->sql .= " LIMIT ".$args['limit'];
+                }
+                /** LIMIT */
                 if($is_debug){
                     debug($args);
                     debug($this->sql, true);

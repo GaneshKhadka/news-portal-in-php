@@ -2,6 +2,8 @@
 $_title = "Admin Dashboard";
 require_once 'inc/header.php';
 require_once 'inc/checklogin.php';
+require_once 'inc/admin.php';
+
 
 $category = new Category;
 $act = "add";

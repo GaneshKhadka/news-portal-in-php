@@ -6,4 +6,12 @@
             parent::__construct();
             $this->table = "categories";
         }
+
+        public function getMenu(){
+            $args = array(
+                'where' => " status = 'active' ",
+                'order_by' => "id ASC"
+            );
+            return $this->select($args);
+        }
     }

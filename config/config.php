@@ -36,3 +36,31 @@
 
     );
 
+    // for advertisement
+    $position = array(
+        'home1' => 'above_logo',
+        'home2' => 'side_logo',
+        'home3' => 'below_menu',
+        'home4' => 'center_ads',
+        'home5' => 'right_side',
+        'home6' => 'left_side',
+        'detail1' => 'detail_one_ads',
+        'detail2' => 'detail_two_ads',
+        'detail3' => 'detail_three_ads',
+        'detail4' => 'detail_four_ads',
+        'detail5' => 'detail_five_ads',
+        'detail6' => 'detail_six_ads',
+    );
+
+    // for front-end
+
+    define('ASSETS_URL',SITE_URL.'/assets');
+    define('ASSETS_CSS_URL',ASSETS_URL.'/css');
+    define('ASSETS_JS_URL',ASSETS_URL.'/js');
+    define('ASSETS_IMAGES_URL',ASSETS_URL.'/img');
+
+    // for seo
+    define('META_KEYWORDS','newsportal, news, nepali news, nepali news portal');
+    define('META_DESCRIPTION','News will provide you all sorts of news from nepal.');
+    
+

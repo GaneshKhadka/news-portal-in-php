@@ -64,7 +64,7 @@ if(isset($_GET, $_GET['id']) && !empty($_GET['id'])){
                     <div class="form-group row">
                       <label for="" class="col-sm-3">Description: </label>
                       <div class="col-sm-9">
-                        <textarea name="description" id="description" rows="5" placeholder="Enter news description.." style="resize: none;" class="form-control form-control-sm"><?php echo @$news_info[0]->summary; ?></textarea>
+                        <textarea name="description" id="description" rows="5" placeholder="Enter news description.." style="resize: none;" class="form-control form-control-sm"><?php echo @$news_info[0]->description; ?></textarea>
                     </div>
                     </div>
 

@@ -37,7 +37,12 @@
                 }
 
                 // debug($_SESSION,true);
-                redirect('../dashboard.php','success','Welcome to admin panel.');
+
+                if($user_info[0]->role == 'admin'){
+                    redirect('../dashboard.php','success','Welcome to admin panel.');
+                } else {
+                    redirect('../reporter-dashboard.php','success','Welcome to admin panel.');
+                }
 
             } else{
                 redirect("../",'error','Credentials doesnot match');

@@ -1,4 +1,6 @@
-<!-- video 13 40 mins completed -->
+<!-- video 16 37.12mins completed -->
+
+<!-- video 10 42.34 -->
 
 <!-- news-portal6@gmail.com -->
 <!-- admin123 -->

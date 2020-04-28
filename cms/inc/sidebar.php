@@ -62,7 +62,7 @@
 
 
 <li class="nav-item">
-  <a class="nav-link" href="index.html">
+  <a class="nav-link" href="advertisement.php">
     <i class="fas fa-fw fa-ad"></i>
     <span>Ads Manager</span></a>
 </li>
