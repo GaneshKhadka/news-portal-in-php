@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 29, 2020 at 03:36 PM
+-- Generation Time: Apr 29, 2020 at 10:35 PM
 -- Server version: 5.7.29-0ubuntu0.18.04.1
 -- PHP Version: 7.4.3
 
@@ -201,7 +201,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `role`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'news-portal6@gmail.com', '$2y$10$d7VS1iMfEWDZiTjyIQ8j6uhXZyr9mdb0xpdhiQGubD2.b8rlEFbwm', 'YlnMOrEP0xjAaQuylJCKRt8ciP9CyBCnNLfqamiMi9eZdWItFbNxC3f4oA5LO2lhJOknnpOZEZT73M1MN9fp8Wqby6mOuJQwEvnr', 'admin', 'active', '2020-04-12 12:29:35', '2020-04-29 14:27:37'),
+(1, 'Admin', 'news-portal6@gmail.com', '$2y$10$d7VS1iMfEWDZiTjyIQ8j6uhXZyr9mdb0xpdhiQGubD2.b8rlEFbwm', 'sPPrcfHHk6G8eYIsRMDeoEltJt6n5SoUxIRrPlJF08r6Vbk1wBCKaWqPYwdxc8WChcgXsGrwqBcMbkxba9UC8TSa1pWu09Qx53Ls', 'admin', 'active', '2020-04-12 12:29:35', '2020-04-29 19:24:13'),
 (2, 'Reporter', 'reporternews-portal6@gmail.com', '$2y$10$C2QvjR0z/mVYlHvHpBZ6AeGn0ZhKrdAX8afJ/lSVdf8e/neF771Yu', '', 'reporter', 'active', '2020-04-12 12:29:35', '2020-04-23 22:25:11'),
 (4, 'Gillian Fulton', 'xucafyl@mailinator.net', '$2y$10$wwTeKKamY/LuzA8KmQdWgO1TL0fzEAUrvm71LF3.ivy.z2lvYWMX2', NULL, 'reporter', 'inactive', '2020-04-23 22:05:25', NULL);
 

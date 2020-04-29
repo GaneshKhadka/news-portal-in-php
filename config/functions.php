@@ -120,3 +120,9 @@
         $url = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
         return $url;
     }
+
+
+    function getCurrentPage(){
+        $page_name = pathinfo($_SERVER['REQUEST_URI'], PATHINFO_FILENAME);
+        return $page_name;
+    }

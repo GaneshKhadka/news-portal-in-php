@@ -38,4 +38,12 @@
             );
             return $this->select($args);
         }
+        public function getRelatedNews($cat_id, $id){
+            $args = array(
+                'where' => " status = 'active' AND cat_id =".$cat_id." AND id != ".$id,
+                'order_by' => 'id DESC',
+                'limit' => "0, 4"
+            );
+            return $this->select($args);
+        }
     }

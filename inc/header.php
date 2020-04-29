@@ -28,6 +28,8 @@
 </head>
 
 <body>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=317482342554817&autoLogAppEvents=1"></script>
     <?php 
         $ads = new Advertisement;
         $home_1 = $ads->getAdvertisementByPosition('home1');
@@ -108,7 +110,7 @@
                             foreach($all_cats as $cats){
                                 ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="category.php?id=<?php echo $cats->id?>">
+                                    <a class="nav-link <?php echo (getCurrentPage() == 'category' && $cats->id == $_GET['id']) ? 'active' : '' ?>" href="category.php?id=<?php echo $cats->id?>">
                                         <?php echo $cats->title ?>
                                     </a>
                                 </li> 
