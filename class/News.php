@@ -16,4 +16,26 @@
             );
             return $this->select($args);
         }
+        public function getCategoryWiseNews($cat_id, $start, $count){
+            $args = array(
+                'where' => array(
+                    "status" => 'active',
+                    'cat_id' => $cat_id
+                ),
+                'order_by' => "id DESC",
+                'limit' => $start.", ".$count
+            );
+            return $this->select($args);
+        }
+        public function getStatewiseNews($state){
+            $args = array(
+                'where' => array(
+                    "status" => 'active',
+                    'state' => $state
+                ),
+                'order_by' => "id DESC",
+                'limit' => "0,5"
+            );
+            return $this->select($args);
+        }
     }

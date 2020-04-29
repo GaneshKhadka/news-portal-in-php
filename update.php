@@ -1,4 +1,4 @@
-<!-- video 16 37.12mins completed -->
+<!-- video 16 completed -->
 
 <!-- video 10 42.34 -->
 

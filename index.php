@@ -10,6 +10,7 @@
     require_once 'inc/header.php';
     $news = new News;
     $featured_top = $news->getFeaturedNews(0,3);
+    // debug($featured_top,true);
     if($featured_top){
         ?>
             <div class="banner-news">
@@ -48,548 +49,279 @@
     <div class="listing">
         <div class="container">
             <div class="row">
+                    <?php
+                        $other = $news->getFeaturedNews(3,5);
+
+                        if($other){
+                            $first_elem = array_shift($other);
+
+                    ?>
                 <div class="col-md-6 col-sm-12">
                     <div class="card listnews-1">
-                        <img src="assets/img/Sky-Dive-form-Mount-Everest-Sagarmatha-1024x375.webp" class="card-img-top main-image-1" alt="...">
+
+                        <img src="<?php echo UPLOAD_URL.'/news/'.$first_elem->image ?>" class="card-img-top main-image-1" alt="...">
+                        
                         <div class="card-body">
-                            <p class="card-text1"><a href="">भ्रमण वर्षका इभेन्ट : मुस्ताङमा आइस क्लाइम्बिङदेखि स्याङबोचेमा स्काइडाइभिङसम्म</a></p>
+                            <p class="card-text1">
+                                <a href="news.php?id=<?php $first_elem->id?>">
+                                    <?php echo $first_elem->title ?>
+                                </a>
+                            </p>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-6 col-sm-12">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <img src="assets/img/Lever-Transplant-team-of-Teaching-Hospital-Kathmandu-300x182.webp" style="width: 100%; height: auto; ">
-                        </div>
-                        <div class="col-md-5">
-                            <p style="font-weight: 600; font-size: 1em;" class="list11"><a href="#">त्रिवि शिक्षण अस्पतालमा तेस्रोपटक कलेजोको सफल प्रत्यारोपण २ घन्टा..</a></p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row mt-3">
-                        <div class="col-md-5">
-                            <img src="assets/img/Pradip-Gyawali-Manmar-Visit-300x203.webp" style="width: 100%; height: auto; border:1px solid #e8edf4;">
-                        </div>
-                        <div class="col-md-5">
-                            <p style="font-weight: 600; font-size: 1em;" class="list11"><a href="#">म्यान्माले नेपाललाई दियो बुद्धका ३० मूर्ति..</a></p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row mt-3">
-                        <div class="col-md-5">
-                            <img src="assets/img/smart-license-lisence--300x186.webp" style="width: 100%; height: auto;  border:1px solid #e8edf4;">
-                        </div>
-                        <div class="col-md-5">
-                            <p style="font-weight: 600; font-size: 1em;" class="list11"><a href="#">६ लाखले लाइसेन्स पाउन बाँकी, मास प्रिन्टर अझै प्रयोगमा आएन..</a></p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row mt-3">
-                        <div class="col-md-5">
-                            <img src="assets/img/Gokul-Baskota-300x152.webp" style="width: 100%; height: auto;  border:1px solid #e8edf4;">
-                        </div>
-                        <div class="col-md-5">
-                            <p style="font-weight: 600; font-size: 1em;" class="list11"><a href="#">एक हजार आईटी ल्याबमध्ये ९७ वटा आफ्नै जिल्लामा..</a></p>
-                        </div>
-                    </div>
+
+                <?php 
+                    if($other){
+                        foreach($other as $key => $other_news){
+                            ?>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <img src="<?php echo UPLOAD_URL.'/news/'.$other_news->image ?>" style="width: 100%; height: 150px; ">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <p style="font-weight: 600; font-size: 1em;" class="list11">
+                                            <a href="news.php?id=<?php echo $other_news->id ?>">
+                                                <?php echo $other_news->title ?>
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <hr>
+                            <?php
+                        }
+                    }
+                ?>
+
                 </div>
+                        <?php } ?>
             </div>
         </div>
     </div>
     <!-- Content Closed -->
-    <!-- Listing_paage -->
+    
+    <?php 
+        $category_news = $news->getCategoryWiseNews(2, 0, 5);
+        // debug($category_news,true); 
+        if($category_news){
+            $first_news = array_shift($category_news);
+            ?>
+            <!-- Listing_paage -->
     <div class="title_news">
         <div class="container">
             <ul class="css-nav">
-                <li><a href="#about">समाचार</a></li>
+                <li><a href="category.php?id=2">Politics</a></li>
             </ul>
             <div class="row mt-3">
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-12">
                             <h1 class="title_news1">
-                                <a href="#">
-                                    रामेछाप सदरमुकाम र नाकाहरुमा सीसी क्यामराबाट निगरानी
-                                </a>
+                                <a href="news.php?id=<?php echo $first_news->id; ?>">
+                                    <?php echo $first_news->title; ?>                                </a>
                             </h1>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <a href="#">
-                                <img src="assets/img/CCTV-Camera-768x532.webp" style="height: auto; width: 100%;">
+                            <a href="news.php?id=<?php echo $first_news->id; ?>">
+                                <img src="<?php echo UPLOAD_URL.'/news/'.$first_news->image ?>" style="height: auto; width: 100%;">
                             </a>
                         </div>
                         <div class="col-md-6">
                             <p class="summary-text">
-                                २ कात्तिक, मन्थली । रामेछाप प्रहरीले जिल्लाका प्रमुख नाकाहरुमा सीसी टीभी क्यामराबाट निगरानी सुरु गरेको छ । प्रहरीले स्थानीय सरकारसँगको सहकार्यमा बजारका प्रमुख केन्द्र र नाकाहरुमा सीसी क्यामरा जोडेर निगरानी सुरु गरेको हो ।
+                               <?php echo $first_news->summary ?>
                             </p>
-                            <p class="summary-text">
-                                रामेछाप प्रहरीले जिल्लाका प्रमुख नाकाहरुमा सीसी टीभी क्यामराबाट निगरानी सुरु गरेको छ । प्रहरीले स्थानीय सरकारसँगको सहकार्यमा बजारका प्रमुख केन्द्र र नाकाहरुमा सीसी क्यामरा जोडेर निगरानी सुरु गरेको हो । अपराधिक घटना हुन नदिन र भएमा पनि अपराधी सहजै पत्ता लगाउन सीसीटीभी जडान गरिएको जिल्ला प्रहरी कार्यालय रामेछापका प्रमुख प्रहरी नायव […]
-                            </p>
+                            <!-- read more -->
+                            <a href="news.php?id=<?php echo $first_news->id; ?>">
+                                Read more..
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
             <hr>
             <div class="row mt-3">
-                <div class="col-md-3">
-                    <img src="assets/img/Rekha-Pariyar-Aruna-Hingmang-Pabitra-Gauli-300x201.webp" alt="" style="width: 100%; height: auto;">
-                    <p class="three_nepali mt-3">
-                        <a href="">
-                            तीन नेपाली चेली अन्तर्राष्ट्रिय युवा अवार्डबाट सम्मानित
-                        </a>
-                    </p>
-                </div>
-                <div class="col-md-3">
-                    <img src="assets/img/Krishna-bahadur-mahara-5-300x188.webp" alt="" style="width: 100%; height: auto;">
-                    <p class="three_nepali mt-3">
-                        <a href="">
-                            महराको बयान अझै भएन, स्वास्थ्य समस्याले होः प्रहरी
-                        </a>
-                    </p>
-                </div>
-                <div class="col-md-3">
-                    <img src="assets/img/sherbahadur-deuba-300x182.jpg" alt="" style="width: 100%; height: auto;">
-                    <p class="three_nepali mt-3">
-                        <a href="">
-                            आलम पक्राउ कांग्रेसविरुद्धको षडयन्त्र : देउवा
-                        </a>
-                    </p>
-                </div>
-                <div class="col-md-3">
-                    <img src="assets/img/sherbahadur-deuba-300x182.jpg" alt="" style="width: 100%; height: auto;">
-                    <p class="three_nepali mt-3">
-                        <a href="">
-                            आलम पक्राउ कांग्रेसविरुद्धको षडयन्त्र : देउवा
-                        </a>
-                    </p>
-                </div>
-            </div>
+            <?php
+                if($category_news){
+                    foreach($category_news as $cat_news){
+                        ?>
+                        <div class="col-md-3">
+                            <img src="<?php echo UPLOAD_URL.'/news/'.$cat_news->image ?>" alt="" style="width: 100%; height: auto;">
+                            <p class="three_nepali mt-3">
+                                <a href="news.php?id=<?php echo $cat_news->id; ?>">
+                                <?php echo $cat_news->title ?>
+                                </a>
+                            </p>
+                            </div>
+                        <?php
+                    }
+                }
+            ?>
+         </div>
+         <hr>
+         <?php 
+            $cat_news_first = $news->getCategoryWiseNews(4, 0, 5);
+            if ($cat_news_first) {
+                ?>
             <div class="row mt-3">
-                <div class="row mt-3">
                     <div class="col-md-6">
-                        <div class="row mt-3">
-                            <div class="col-md-5">
-                                <img src="assets/img/Supreme-Court-300x180.jpg" style="width: 100%; height: auto;  border:1px solid #e8edf4;">
-                            </div>
-                            <div class="col-md-5">
-                                <p style="font-weight: 600; font-size: 1em;" class="list11"><a href="#">स्थानीय तहका जनप्रतिनिधिलाई पारिश्रमिक नदिन सर्वोच्चको आदेश..</a></p>
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-5">
-                                <img src="assets/img/Prov-1-vs-other-300x160.webp" style="width: 100%; height: auto;  border:1px solid #e8edf4;">
-                            </div>
-                            <div class="col-md-5">
-                                <p style="font-weight: 600; font-size: 1em;" class="list11"><a href="#">अरूको सुविधा खारेज हुँदा प्रदेश १ का स्थानीय जनप्रतिनिधि कसरी बचे ?..</a></p>
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-5">
-                                <img src="assets/img/onion-300x196.webp" style="width: 100%; height: auto;  border:1px solid #e8edf4;">
-                            </div>
-                            <div class="col-md-5">
-                                <p style="font-weight: 600; font-size: 1em;" class="list11"><a href="#">भारतले रोकेपछि नेपालमा चीनबाट भित्रिन थाल्यो प्याज..</a></p>
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-5">
-                                <img src="assets/img/Shankar-pokharel-1-300x132.webp" style="width: 100%; height: auto;  border:1px solid #e8edf4;">
-                            </div>
-                            <div class="col-md-5">
-                                <p style="font-weight: 600; font-size: 1em;" class="list11"><a href="#">सर्वोच्चको आदेशप्रति प्रदेश ५ का मुख्यमन्त्रीको असन्तुष्टि..</a></p>
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-5">
-                                <img src="assets/img/UNESCO-Misson-meets-with-NRA-CEO-300x182.webp" style="width: 100%; height: auto;  border:1px solid #e8edf4;">
-                            </div>
-                            <div class="col-md-5">
-                                <p style="font-weight: 600; font-size: 1em;" class="list11"><a href="#">युनेस्को मिसन नेपालमा, सम्पदा पुनर्निर्माणबारे अध्ययन गर्दै..</a></p>
-                            </div>
-                        </div>
+                        <?php 
+                            foreach($cat_news_first as $cat_news_left){
+                                ?>
+                                    <div class="row mt-3">
+                                        <div class="col-md-5">
+                                        <img src="<?php echo UPLOAD_URL.'/news/'.$cat_news_left->image; ?>" style="width: 100%; height: auto;  border:1px solid #e8edf4;">
+                                        </div>
+                                    <div class="col-md-5">
+                                        <p style="font-weight: 600; font-size: 1em;" class="list11">
+                                            <a href="news.php?id=<?php echo $cat_news_left->id; ?>">
+                                                 <?php echo $cat_news_left->title ?>
+                                            </a>
+                                        </p>
+                                    </div>
+                                    </div>
+                                <?php
+                            }
+                        ?>
                     </div>
                     <div class="col-md-6">
-                        <div class="row mt-3">
-                            <div class="col-md-5">
-                                <img src="assets/img/Ram-saran-basnet-300x183.webp" style="width: 100%; height: auto;  border:1px solid #e8edf4;">
-                            </div>
-                            <div class="col-md-5">
-                                <p style="font-weight: 600; font-size: 1em;" class="list11"><a href="#">‘भत्ता दिँदा ठीक, एकमुष्ठ पारिश्रमिक दिँदा बेठीक भने झै भयो’..</a></p>
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-5">
-                                <img src="assets/img/Nepali-congrress-training-300x183.jpg" style="width: 100%; height: auto;  border:1px solid #e8edf4;">
-                            </div>
-                            <div class="col-md-5">
-                                <p style="font-weight: 600; font-size: 1em;" class="list11"><a href="#">गाउँपालिका अध्यक्षलाई आधा कार्यकाल घर्केपछि कांग्रेसको प्रशिक्षण..</a></p>
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-5">
-                                <img src="assets/img/Bijaya-yadav-300x182.webp" style="width: 100%; height: auto;  border:1px solid #e8edf4;">
-                            </div>
-                            <div class="col-md-5">
-                                <p style="font-weight: 600; font-size: 1em;" class="list11"><a href="#">मधेस आन्दोलनका घाइतेको प्रश्न : नेताज्यू, वाचा गरेको ५० लाख खोई ?..</a></p>
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-5">
-                                <img src="assets/img/Woman-conference-300x182.webp" style="width: 100%; height: auto;  border:1px solid #e8edf4;">
-                            </div>
-                            <div class="col-md-5">
-                                <p style="font-weight: 600; font-size: 1em;" class="list11"><a href="#">महिला अधिकार अनुगमन गर्न छुट्टै सं‌वैधानिक संयन्त्रको माग..</a></p>
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-5">
-                                <img src="assets/img/flowers-300x182.webp" style="width: 100%; height: auto;  border:1px solid #e8edf4;">
-                            </div>
-                            <div class="col-md-5">
-                                <p style="font-weight: 600; font-size: 1em;" class="list11"><a href="#">जाउलाखेलमा गोदावरी पुष्प मेला सुरु..</a></p>
-                            </div>
-                        </div>
-                    </div>
+                        <?php 
+                            $cat_news_second = $news->getCategoryWiseNews(4, 5, 5);
+                            // debug($cat_news_second,true);
+                            if($cat_news_second){
+                                foreach($cat_news_second as $right_news){
+                                    ?>
+                                         <div class="row mt-3">
+                                            <div class="col-md-5">
+                                                <img src="<?php echo UPLOAD_URL.'/news/'.$right_news->image ?>" style="width: 100%; height: auto;  border:1px solid #e8edf4;">
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p style="font-weight: 600; font-size: 1em;" class="list11">
+                                                    <a href="news.php?id=<?php echo $right_news->id ?>">
+                                                        <?php echo $right_news->title; ?>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    <?php
+                                }
+                            }
+                        ?>
                 </div>
             </div>
+            <?php
+            } ?>
         </div>
     </div>
     <!-- ListingPage closed -->
+            <?php
+        }
+    ?>
+
+    
     <!-- देश -->
     <div class="country">
         <div class="container">
             <div class="row mt-3">
                 <div class="col-md-9">
                     <nav class="navbar navbar-light bg-light" style="border-radius: 20px;">
-                        <a class="navbar-brand" href="#">देश</a>
+                        <a class="navbar-brand" href="#"> State </a>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <a class="nav-item nav-link active" id="nav-state1-tab" data-toggle="tab" href="#nav-state1" role="tab" aria-controls="nav-state1" aria-selected="true">
-                                State 1
+
+                            <?php
+                            $all = array_shift($state);
+                                foreach($state as $key => $state_name){
+                                    ?>
+                            <a class="nav-item nav-link <?php echo $key == 'state1' ? 'active' : ''?>" id="nav-<?php echo $key; ?>-tab" data-toggle="tab" href="#nav-<?php echo $key ?>" role="tab" aria-controls="nav-<?php echo $key ?>" aria-selected="<?php echo $key == 'state1' ? true : false?>">
+                                <?php echo $state_name ?>
                             </a>
-                            <a class="nav-item nav-link" id="nav-state2-tab" data-toggle="tab" href="#nav-state2" role="tab" aria-controls="nav-state2" aria-selected="false">
-                                State 2
-                            </a>
-                            <a class="nav-item nav-link" id="nav-state3-tab" data-toggle="tab" href="#nav-state3" role="tab" aria-controls="nav-state3" aria-selected="false">
-                                State 3
-                            </a>
-                            <a class="nav-item nav-link" id="nav-state4-tab" data-toggle="tab" href="#nav-state4" role="tab" aria-controls="nav-state4" aria-selected="false">
-                                State 4
-                            </a>
-                            <a class="nav-item nav-link" id="nav-state5-tab" data-toggle="tab" href="#nav-state5" role="tab" aria-controls="nav-state5" aria-selected="false">
-                                State 5
-                            </a>
-                            <a class="nav-item nav-link" id="nav-state6-tab" data-toggle="tab" href="#nav-state6" role="tab" aria-controls="nav-state6" aria-selected="false">
-                                State 6
-                            </a>
-                            <a class="nav-item nav-link" id="nav-state7-tab" data-toggle="tab" href="#nav-state7" role="tab" aria-controls="nav-state7" aria-selected="false">
-                                State 7
-                            </a>
+                            
+                            <?php
+                                }
+                            ?>
+
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="nav-state1" role="tabpanel" aria-labelledby="nav-state1-tab">
-                            <div class="row mt-3">
-                                <div class="col-md-6">
-                                    <a href="#"><img src="assets/img/Nagdhunga-JAm-2076-19-768x501.webp" style="width: 100%; height: auto;"></a>
-                                    <h1 class="nagdunga"><a href="#">नौबिसे-नागढुंगा सडकखण्डमा १० बजेदेखि ४ बजेसम्म एकतर्फी यातायात सञ्चालन</a></h1>
-                                    <p>२ कात्तिक, काठमाडौं । नौबिसे-नागढुंगा सडकखण्डमा यातायातका साधन एकतर्फी सञ्चालन गरिएको छ । धादिङको धुनिवेशी नगरपालिका ९ पिपलामोडभन्दा तल भूत घर, याक घर र टायल घर सडक खण्डमा कालोपत्रे...</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/mahila-sammelan-300x182.webp" style="width: 100%; height: auto;"></a>
+                        <?php 
+                            foreach($state as $key => $state_name) {
+                                $state_wise = $news->getStatewiseNews($key);
+                                ?>
+                                 <div class="tab-pane fade <?php echo $key == 'state1' ? 'show active' : '' ?>" id="nav-<?php echo $key; ?>" role="tabpanel" aria-labelledby="nav-<?php echo $key ?>-tab">
+                                   <?php 
+                                    if($state_wise){
+                                        $first_state_news = array_shift($state_wise);
+                                        ?>
+                                         <div class="row mt-3">
+                                                <div class="col-md-6">
+                                                    <a href="news.php?id=<?php echo $first_state_news->id; ?>">
+                                                       <?php 
+                                                       if(file_exists(UPLOAD_PATH.'/news/'.$first_state_news->image) && !empty($first_state_news->image)){
+                                                        ?>
+                                                            <img src="<?php echo UPLOAD_URL.'/news/'.$first_state_news->image; ?>" style="width: 100%; height: auto;">
+        
+                                                        <?php
+                                                    } else{
+                                                        ?>
+                                                        <img src="<?php echo ASSETS_IMAGES_URL.'/logo.png'; ?>" style="width: 100%; height: auto;">
+                                        
+                                                        <?php
+                                                    }
+                                                       ?>
+                                                    </a>
+                                                    <h1 class="nagdunga">
+                                                        <a href="news.php?id=<?php echo $first_state_news->id?>">
+                                                            <?php echo $first_state_news->title ?>
+                                                        </a></h1>
+                                                    <p><?php echo $first_state_news->summary ?></p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <?php 
+                                                            if($state_wise){
+                                                                foreach($state_wise as $news_list){
+                                                                    ?>
+                                                                    <div class="col-md-6">
+                                                                        <a href="news.php?id=<?php echo $news_list->id ?>">
+                                                                            <?php
+                                                                                if(file_exists(UPLOAD_PATH.'/news/'.$news_list->image) && !empty($news_list->image)){
+                                                                                    ?>
+                                                                                       <img src="<?php echo UPLOAD_URL.'/news/'.$news_list->image ?>" style="width: 100%; height: auto;">
+                                                                                    <?php
+                                                                                } else{
+                                                                                    ?>
+                                                                                         <img src="<?php echo ASSETS_IMAGES_URL.'/logo.png'; ?>" style="width: 100%; height: auto;">
+                                                                                    <?php
+                                                                                }
+                                                                            ?>
+                                                                        </a>
+                                                                        <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">
+                                                                            <a href="news.php?id=<?php echo $news_list->id ?>">
+                                                                                <?php echo $news_list->title ?>
+                                                                            </a>
+                                                                        </p>
+                                                                    </div>
+                                                                    <?php
+                                                                }
+                                                            }
+                                                        ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                <?php
+                                            } else {
+                                                echo "No news found.";
+                                            }
+                                        ?>
                                         </div>
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/Pokhara-High-Court-300x150.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">२० बुँदे घोषणापत्रसहित बेइजिङ समीक्षा सम्मेलन सम्पन्न</p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">उच्च अदालत पोखराका न्यायाधीश शाही सेवाबाट बर्खास्त</p>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-5">
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/mahila-sammelan-300x182.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/Three-senior-officers-feliciatied-300x180.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">सचिवको गुनासो : महिला आयोगको नेतृत्व मैले लिनुपरेको छ</p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">स्टाफ कलेजद्वारा प्रधानसेनापति र सशस्त्रका आईजीपी सम्मानित</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="nav-state2" role="tabpanel" aria-labelledby="nav-state2-tab">
-                            <div class="row mt-3">
-                                <div class="col-md-6">
-                                    <a href="#"><img src="assets/img/Nagdhunga-JAm-2076-19-768x501.webp" style="width: 100%; height: auto;"></a>
-                                    <h1 class="nagdunga"><a href="#">नौबिसे-नागढुंगा सडकखण्डमा १० बजेदेखि ४ बजेसम्म एकतर्फी यातायात सञ्चालन</a></h1>
-                                    <p>२ कात्तिक, काठमाडौं । नौबिसे-नागढुंगा सडकखण्डमा यातायातका साधन एकतर्फी सञ्चालन गरिएको छ । धादिङको धुनिवेशी नगरपालिका ९ पिपलामोडभन्दा तल भूत घर, याक घर र टायल घर सडक खण्डमा कालोपत्रे...</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/mahila-sammelan-300x182.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/Pokhara-High-Court-300x150.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">२० बुँदे घोषणापत्रसहित बेइजिङ समीक्षा सम्मेलन सम्पन्न</p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">उच्च अदालत पोखराका न्यायाधीश शाही सेवाबाट बर्खास्त</p>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-5">
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/mahila-sammelan-300x182.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/Three-senior-officers-feliciatied-300x180.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">सचिवको गुनासो : महिला आयोगको नेतृत्व मैले लिनुपरेको छ</p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">स्टाफ कलेजद्वारा प्रधानसेनापति र सशस्त्रका आईजीपी सम्मानित</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="nav-state3" role="tabpanel" aria-labelledby="nav-state3-tab">
-                            <div class="row mt-3">
-                                <div class="col-md-6">
-                                    <a href="#"><img src="assets/img/Nagdhunga-JAm-2076-19-768x501.webp" style="width: 100%; height: auto;"></a>
-                                    <h1 class="nagdunga"><a href="#">नौबिसे-नागढुंगा सडकखण्डमा १० बजेदेखि ४ बजेसम्म एकतर्फी यातायात सञ्चालन</a></h1>
-                                    <p>२ कात्तिक, काठमाडौं । नौबिसे-नागढुंगा सडकखण्डमा यातायातका साधन एकतर्फी सञ्चालन गरिएको छ । धादिङको धुनिवेशी नगरपालिका ९ पिपलामोडभन्दा तल भूत घर, याक घर र टायल घर सडक खण्डमा कालोपत्रे...</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/mahila-sammelan-300x182.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/Pokhara-High-Court-300x150.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">२० बुँदे घोषणापत्रसहित बेइजिङ समीक्षा सम्मेलन सम्पन्न</p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">उच्च अदालत पोखराका न्यायाधीश शाही सेवाबाट बर्खास्त</p>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-5">
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/mahila-sammelan-300x182.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/Three-senior-officers-feliciatied-300x180.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">सचिवको गुनासो : महिला आयोगको नेतृत्व मैले लिनुपरेको छ</p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">स्टाफ कलेजद्वारा प्रधानसेनापति र सशस्त्रका आईजीपी सम्मानित</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="nav-state4" role="tabpanel" aria-labelledby="nav-state4-tab">
-                            <div class="row mt-3">
-                                <div class="col-md-6">
-                                    <a href="#"><img src="assets/img/Nagdhunga-JAm-2076-19-768x501.webp" style="width: 100%; height: auto;"></a>
-                                    <h1 class="nagdunga"><a href="#">नौबिसे-नागढुंगा सडकखण्डमा १० बजेदेखि ४ बजेसम्म एकतर्फी यातायात सञ्चालन</a></h1>
-                                    <p>२ कात्तिक, काठमाडौं । नौबिसे-नागढुंगा सडकखण्डमा यातायातका साधन एकतर्फी सञ्चालन गरिएको छ । धादिङको धुनिवेशी नगरपालिका ९ पिपलामोडभन्दा तल भूत घर, याक घर र टायल घर सडक खण्डमा कालोपत्रे...</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/mahila-sammelan-300x182.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/Pokhara-High-Court-300x150.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">२० बुँदे घोषणापत्रसहित बेइजिङ समीक्षा सम्मेलन सम्पन्न</p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">उच्च अदालत पोखराका न्यायाधीश शाही सेवाबाट बर्खास्त</p>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-5">
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/mahila-sammelan-300x182.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/Three-senior-officers-feliciatied-300x180.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">सचिवको गुनासो : महिला आयोगको नेतृत्व मैले लिनुपरेको छ</p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">स्टाफ कलेजद्वारा प्रधानसेनापति र सशस्त्रका आईजीपी सम्मानित</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="nav-state5" role="tabpanel" aria-labelledby="nav-state5-tab">
-                            <div class="row mt-3">
-                                <div class="col-md-6">
-                                    <a href="#"><img src="assets/img/Nagdhunga-JAm-2076-19-768x501.webp" style="width: 100%; height: auto;"></a>
-                                    <h1 class="nagdunga"><a href="#">नौबिसे-नागढुंगा सडकखण्डमा १० बजेदेखि ४ बजेसम्म एकतर्फी यातायात सञ्चालन</a></h1>
-                                    <p>२ कात्तिक, काठमाडौं । नौबिसे-नागढुंगा सडकखण्डमा यातायातका साधन एकतर्फी सञ्चालन गरिएको छ । धादिङको धुनिवेशी नगरपालिका ९ पिपलामोडभन्दा तल भूत घर, याक घर र टायल घर सडक खण्डमा कालोपत्रे...</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/mahila-sammelan-300x182.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/Pokhara-High-Court-300x150.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">२० बुँदे घोषणापत्रसहित बेइजिङ समीक्षा सम्मेलन सम्पन्न</p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">उच्च अदालत पोखराका न्यायाधीश शाही सेवाबाट बर्खास्त</p>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-5">
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/mahila-sammelan-300x182.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/Three-senior-officers-feliciatied-300x180.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">सचिवको गुनासो : महिला आयोगको नेतृत्व मैले लिनुपरेको छ</p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">स्टाफ कलेजद्वारा प्रधानसेनापति र सशस्त्रका आईजीपी सम्मानित</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="nav-state6" role="tabpanel" aria-labelledby="nav-state6-tab">
-                            <div class="row mt-3">
-                                <div class="col-md-6">
-                                    <a href="#"><img src="assets/img/Nagdhunga-JAm-2076-19-768x501.webp" style="width: 100%; height: auto;"></a>
-                                    <h1 class="nagdunga"><a href="#">नौबिसे-नागढुंगा सडकखण्डमा १० बजेदेखि ४ बजेसम्म एकतर्फी यातायात सञ्चालन</a></h1>
-                                    <p>२ कात्तिक, काठमाडौं । नौबिसे-नागढुंगा सडकखण्डमा यातायातका साधन एकतर्फी सञ्चालन गरिएको छ । धादिङको धुनिवेशी नगरपालिका ९ पिपलामोडभन्दा तल भूत घर, याक घर र टायल घर सडक खण्डमा कालोपत्रे...</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/mahila-sammelan-300x182.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/Pokhara-High-Court-300x150.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">२० बुँदे घोषणापत्रसहित बेइजिङ समीक्षा सम्मेलन सम्पन्न</p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">उच्च अदालत पोखराका न्यायाधीश शाही सेवाबाट बर्खास्त</p>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-5">
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/mahila-sammelan-300x182.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/Three-senior-officers-feliciatied-300x180.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">सचिवको गुनासो : महिला आयोगको नेतृत्व मैले लिनुपरेको छ</p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">स्टाफ कलेजद्वारा प्रधानसेनापति र सशस्त्रका आईजीपी सम्मानित</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="nav-state7" role="tabpanel" aria-labelledby="nav-state7-tab">
-                            <div class="row mt-3">
-                                <div class="col-md-6">
-                                    <a href="#"><img src="assets/img/Nagdhunga-JAm-2076-19-768x501.webp" style="width: 100%; height: auto;"></a>
-                                    <h1 class="nagdunga"><a href="#">नौबिसे-नागढुंगा सडकखण्डमा १० बजेदेखि ४ बजेसम्म एकतर्फी यातायात सञ्चालन</a></h1>
-                                    <p>२ कात्तिक, काठमाडौं । नौबिसे-नागढुंगा सडकखण्डमा यातायातका साधन एकतर्फी सञ्चालन गरिएको छ । धादिङको धुनिवेशी नगरपालिका ९ पिपलामोडभन्दा तल भूत घर, याक घर र टायल घर सडक खण्डमा कालोपत्रे...</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/mahila-sammelan-300x182.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/Pokhara-High-Court-300x150.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">२० बुँदे घोषणापत्रसहित बेइजिङ समीक्षा सम्मेलन सम्पन्न</p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">उच्च अदालत पोखराका न्यायाधीश शाही सेवाबाट बर्खास्त</p>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-5">
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/mahila-sammelan-300x182.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="#"><img src="assets/img/Three-senior-officers-feliciatied-300x180.webp" style="width: 100%; height: auto;"></a>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">सचिवको गुनासो : महिला आयोगको नेतृत्व मैले लिनुपरेको छ</p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">स्टाफ कलेजद्वारा प्रधानसेनापति र सशस्त्रका आईजीपी सम्मानित</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+                                <?php
+                            }
+                        ?>
+
                     </div>
                 </div>
                 <div class="col-md-3">
