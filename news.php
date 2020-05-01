@@ -61,6 +61,14 @@
                                     ?>
                                 </div>
                             </div>
+
+                            <div class="row mt-5">
+                                <div class="col-12">
+                                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                                    <div class="addthis_inline_share_toolbox"></div>
+                                </div>
+                            </div>
+
                             <div class="row">
                                 <div class="col-12">
                                     <p>
@@ -73,6 +81,8 @@
                                             <?php echo $news_info[0]->news_date ?>
                                         </span>
                                     </p>
+
+                                        
                                     <div class="text-justify">
                                     <?php 
                                         echo html_entity_decode($news_info[0]->description)
