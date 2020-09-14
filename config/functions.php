@@ -126,3 +126,6 @@
         $page_name = pathinfo($_SERVER['REQUEST_URI'], PATHINFO_FILENAME);
         return $page_name;
     }
+
+
+    

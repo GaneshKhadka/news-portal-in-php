@@ -6,6 +6,13 @@
     // debug($_FILES);
     $advertisement = new Advertisement;
 
+    // echo $_POST['title'].', '.$_POST['link'].', '.$_POST['start_date'].', '.$_POST['end_date'].' ,'.$_POST['status'].', '.$_POST['position'];
+    // die();
+
+    
+// INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+// VALUES ('Cardinal','Tom B. Erichsen','Skagen 21','Stavanger','4006','Norway');
+
     if(isset($_POST) && !empty($_POST)){
     // debug($_POST);
     // debug($_FILES,true);
@@ -22,6 +29,8 @@
             'status' => sanitize($_POST['status']),
             'position' => sanitize($_POST['position']),
         );
+
+       
         
         // debug($data,true);
 

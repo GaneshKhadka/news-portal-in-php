@@ -26,7 +26,7 @@
                     <div class="row mt-3">
                         <div class="col-12 text-left">
                             <i class="fa fa-envelope"></i> 
-                            ganeshkhadka46@gmail.com
+                            khabarsuddhodhan@gmail.com
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
         </div>
         <hr>
         <div class="container pt-2 " style="padding-bottom: 10px;">
-            © 2018 - <?php echo date('Y') ?> news-portal.loc Designed and developed by Ganesh Khadka.
+            © 2018 - <?php echo date('Y') ?> news-portal.loc Designed and developed with Love.
         </div>
     </section>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

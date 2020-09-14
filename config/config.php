@@ -4,7 +4,7 @@
     date_default_timezone_set('Asia/Kathmandu');
 
     define('SITE_URL', "http://news-portal6.loc");
-    define('SITE_NAME', 'News Portal');
+    define('SITE_NAME', 'Suddhodhan Khabar');
 
     define('DB_HOST','localhost');
     define('DB_NAME','news-portal6');
