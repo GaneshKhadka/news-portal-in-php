@@ -51,6 +51,8 @@
             <div class="row">
                     <?php
                         $other = $news->getFeaturedNews(3,5);
+        // debug($other,true); 
+
 
                         if($other){
                             $first_elem = array_shift($other);
@@ -63,7 +65,7 @@
                         
                         <div class="card-body">
                             <p class="card-text1">
-                                <a href="news.php?id=<?php $first_elem->id?>">
+                                <a href="news.php?id=<?php echo $first_elem->id?>">
                                     <?php echo $first_elem->title ?>
                                 </a>
                             </p>
@@ -233,6 +235,7 @@
 
                             <?php
                             $all = array_shift($state);
+                            // debug($all,true);
                                 foreach($state as $key => $state_name){
                                     ?>
                             <a class="nav-item nav-link <?php echo $key == 'state1' ? 'active' : ''?>" id="nav-<?php echo $key; ?>-tab" data-toggle="tab" href="#nav-<?php echo $key ?>" role="tab" aria-controls="nav-<?php echo $key ?>" aria-selected="<?php echo $key == 'state1' ? true : false?>">
@@ -249,6 +252,8 @@
                         <?php 
                             foreach($state as $key => $state_name) {
                                 $state_wise = $news->getStatewiseNews($key);
+                            // debug($state_wise,true);
+
                                 ?>
                                  <div class="tab-pane fade <?php echo $key == 'state1' ? 'show active' : '' ?>" id="nav-<?php echo $key; ?>" role="tabpanel" aria-labelledby="nav-<?php echo $key ?>-tab">
                                    <?php 
@@ -285,7 +290,7 @@
                                                                 foreach($state_wise as $news_list){
                                                                     ?>
                                                                     <div class="col-md-6">
-                                                                        <a href="news.php?id=<?php echo $news_list->id ?>">
+                                                                        <a href="news.php?id=<?php echo $news_list->id; ?>">
                                                                             <?php
                                                                                 if(file_exists(UPLOAD_PATH.'/news/'.$news_list->image) && !empty($news_list->image)){
                                                                                     ?>
