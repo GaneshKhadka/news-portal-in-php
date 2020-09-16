@@ -499,101 +499,77 @@
             </div>
         </div>
     </div>
+
+    <!-- International open -->
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <ul class="css-nav">
-                    <li><a href="#about">International</a></li>
+                    <li><a href="category.php?id=8">International</a></li>
                 </ul>
             </div>
         </div>
+
+        <!-- for left side 5 -->
+        <?php 
+            $cat_news_international_first = $news->getCategoryWiseNews(8,0,5);
+            // debug($cat_news_international_first,true);
+            if($cat_news_first){
+
+        ?>
         <div class="row mt-3">
             <div class="col-md-6">
-                <div class="row mt-3">
-                    <div class="col-md-5">
-                        <img src="assets/img/Supreme-Court-300x180.jpg" style="width: 100%; height: auto;  border:1px solid #e8edf4;">
-                    </div>
-                    <div class="col-md-5">
-                        <p style="font-weight: 600; font-size: 1em;" class="list11"><a href="#">स्थानीय तहका जनप्रतिनिधिलाई पारिश्रमिक नदिन सर्वोच्चको आदेश..</a></p>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-5">
-                        <img src="assets/img/Prov-1-vs-other-300x160.webp" style="width: 100%; height: auto;  border:1px solid #e8edf4;">
-                    </div>
-                    <div class="col-md-5">
-                        <p style="font-weight: 600; font-size: 1em;" class="list11"><a href="#">अरूको सुविधा खारेज हुँदा प्रदेश १ का स्थानीय जनप्रतिनिधि कसरी बचे ?..</a></p>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-5">
-                        <img src="assets/img/onion-300x196.webp" style="width: 100%; height: auto;  border:1px solid #e8edf4;">
-                    </div>
-                    <div class="col-md-5">
-                        <p style="font-weight: 600; font-size: 1em;" class="list11"><a href="#">भारतले रोकेपछि नेपालमा चीनबाट भित्रिन थाल्यो प्याज..</a></p>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-5">
-                        <img src="assets/img/Shankar-pokharel-1-300x132.webp" style="width: 100%; height: auto;  border:1px solid #e8edf4;">
-                    </div>
-                    <div class="col-md-5">
-                        <p style="font-weight: 600; font-size: 1em;" class="list11"><a href="#">सर्वोच्चको आदेशप्रति प्रदेश ५ का मुख्यमन्त्रीको असन्तुष्टि..</a></p>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-5">
-                        <img src="assets/img/UNESCO-Misson-meets-with-NRA-CEO-300x182.webp" style="width: 100%; height: auto;  border:1px solid #e8edf4;">
-                    </div>
-                    <div class="col-md-5">
-                        <p style="font-weight: 600; font-size: 1em;" class="list11"><a href="#">युनेस्को मिसन नेपालमा, सम्पदा पुनर्निर्माणबारे अध्ययन गर्दै..</a></p>
-                    </div>
-                </div>
+                <?php 
+                    foreach($cat_news_international_first as $cat_news_international_left){
+                        ?>
+                        <div class="row mt-3">
+                            <div class="col-md-5">
+                                <img src="<?php echo UPLOAD_URL.'/news/'.$cat_news_international_left->image; ?>" style="width: 100%; height: auto;  border:1px solid #e8edf4;">
+                            </div>
+                            <div class="col-md-5">
+                                <p style="font-weight: 600; font-size: 1em;" class="list11">
+                                    <a href="news.php?id=<?php echo $cat_news_international_left->id;?>">
+                                         <?php echo $cat_news_international_left->title;?>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                ?>
             </div>
+
             <div class="col-md-6">
-                <div class="row mt-3">
-                    <div class="col-md-5">
-                        <img src="assets/img/Ram-saran-basnet-300x183.webp" style="width: 100%; height: auto;  border:1px solid #e8edf4;">
-                    </div>
-                    <div class="col-md-5">
-                        <p style="font-weight: 600; font-size: 1em;" class="list11"><a href="#">‘भत्ता दिँदा ठीक, एकमुष्ठ पारिश्रमिक दिँदा बेठीक भने झै भयो’..</a></p>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-5">
-                        <img src="assets/img/Nepali-congrress-training-300x183.jpg" style="width: 100%; height: auto;  border:1px solid #e8edf4;">
-                    </div>
-                    <div class="col-md-5">
-                        <p style="font-weight: 600; font-size: 1em;" class="list11"><a href="#">गाउँपालिका अध्यक्षलाई आधा कार्यकाल घर्केपछि कांग्रेसको प्रशिक्षण..</a></p>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-5">
-                        <img src="assets/img/Bijaya-yadav-300x182.webp" style="width: 100%; height: auto;  border:1px solid #e8edf4;">
-                    </div>
-                    <div class="col-md-5">
-                        <p style="font-weight: 600; font-size: 1em;" class="list11"><a href="#">मधेस आन्दोलनका घाइतेको प्रश्न : नेताज्यू, वाचा गरेको ५० लाख खोई ?..</a></p>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-5">
-                        <img src="assets/img/Woman-conference-300x182.webp" style="width: 100%; height: auto;  border:1px solid #e8edf4;">
-                    </div>
-                    <div class="col-md-5">
-                        <p style="font-weight: 600; font-size: 1em;" class="list11"><a href="#">महिला अधिकार अनुगमन गर्न छुट्टै सं‌वैधानिक संयन्त्रको माग..</a></p>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-5">
-                        <img src="assets/img/flowers-300x182.webp" style="width: 100%; height: auto;  border:1px solid #e8edf4;">
-                    </div>
-                    <div class="col-md-5">
-                        <p style="font-weight: 600; font-size: 1em;" class="list11"><a href="#">जाउलाखेलमा गोदावरी पुष्प मेला सुरु..</a></p>
-                    </div>
-                </div>
+                <?php 
+                     $cat_news_international_second = $news->getCategoryWiseNews(8,5,5);
+                  // debug($cat_news_international_left,true);
+                  if($cat_news_international_second){
+                      foreach($cat_news_international_second as $right_news){
+                          ?>
+                         <div class="row mt-3">
+                                <div class="col-md-5">
+                                    <img src="<?php echo UPLOAD_URL.'/news/'.$right_news->image; ?>" style="width: 100%; height: auto;  border:1px solid #e8edf4;">
+                                </div>
+                                <div class="col-md-5">
+                                    <p style="font-weight: 600; font-size: 1em;" class="list11">
+                                        <a href="news.php?id=<?php echo $right_news->id; ?>">
+                                            <?php echo $right_news->title;?>
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                          <?php
+                      }
+                  }
+                ?>
+                
             </div>
         </div>
+            <?php } ?>
     </div>
+
+    <!-- International close -->
+
     <div class="container" style="margin-top: 20px">
         <div class="row">
             <div class="col-12">
