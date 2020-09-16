@@ -370,50 +370,63 @@
         </div>
     </div> 
     <!-- देश Closed -->
-    <!-- Listing_paage -->
-    <div class="title_news">
-        <div class="container">
-            <ul class="css-nav">
-                <li><a href="#about">सूचना-प्रविधि</a></li>
-            </ul>
-            <h1 class="title_news1"><a href="#">यो हो अमेजन कम्पनीको ‘सबैभन्दा स्मार्ट’ काम</a></h1>
-            <div class="row mt-3">
-                <div class="col-md-8">
-                    <a href="#"><img src="assets/img/smart-work-768x465.webp" style="height: auto; width: 100%;"></a>
+
+    <?php 
+        $category_news = $news->getCategoryWiseNews(6,0,5);
+                            // debug($category_news,true);
+        if($category_news){
+            $cat_first_news = array_shift($category_news);
+            ?>
+             <!-- Listing_paage -->
+                <div class="title_news">
+                    <div class="container">
+                        <ul class="css-nav">
+                            <li><a href="category.php?id=6">Entertainment</a></li>
+                        </ul>
+                        <h1 class="title_news1"><a href="news.php?id=<?php echo $cat_first_news->id; ?>"><?php echo $cat_first_news ->title; ?></a></h1>
+                        <div class="row mt-3">
+                            <div class="col-md-8">
+                                <a href="news.php?id=<?php echo $cat_first_news->id; ?>">
+                                    <img src="<?php echo UPLOAD_URL.'/news/'.$cat_first_news->image; ?>" style="height: auto; width: 100%;">
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <p style="font-size: 1.2em; font-weight: 450;">
+                                <?php echo $cat_first_news->summary; ?>
+                                    <a href="news.php?id=<?php echo $cat_first_news->id; ?>">
+                                         [Read more..]
+                                    </a>
+                                 </p>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                        <?php
+                            if($category_news){
+                                foreach($category_news as $cat_news){
+                                    ?>
+                                    <div class="col-md-3">
+                                        <img src="<?php echo UPLOAD_URL.'/news/'.$cat_news->image; ?>" alt="" style="width: 100%; height: auto;">
+                                        <p class="three_nepali">
+                                            <a href="news.php?id=<?php echo $cat_news->id; ?>">
+                                                <?php echo $cat_news->title; ?>
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <?php
+                                }
+                            }
+                        ?>
+                            
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <p style="font-size: 1.2em; font-weight: 450;">विश्वका सबैभन्दा धनी व्यक्ति हुन् जेफ बेजोस । उनी अमेजन कम्पनीका सीईओ हुन् । जेफ बेजोस जब कुनै सार्वजनिक मञ्चहरुमा बोल्दछन्, तब आफ्नो मन्तव्यको अन्तिममा एउटा प्रसँग छुटाउँदैनन् । आफ्नो भाषणको अन्त्यतिर बेजोसले आफ्नो कम्पनी अमेजनभित्र रहेका केही अनुकरणीय तथा प्रेरणादायी प्रयास तथा कार्यहरुहरुको बारेमा बताउँदछन् ।</p>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-md-3">
-                    <img src="assets/img/ntc-nepal-telecom-300x183.webp" alt="" style="width: 100%; height: auto;">
-                    <p class="three_nepali">
-                        <a href="">घट्यो इन्टरनेट लिज लाइनको महसुल</a>
-                    </p>
-                </div>
-                <div class="col-md-3">
-                    <img src="assets/img/samsung-apple-300x159 (1).webp" alt="" style="width: 100%; height: auto;">
-                    <p class="three_nepali">
-                        <a href="">यी हुन् विश्वका सबैभन्दा सिर्जनशील प्रविधि कम्पनीहरु : सामसुङको फड्को, एप्पल कमजोर</a>
-                    </p>
-                </div>
-                <div class="col-md-3">
-                    <img src="assets/img/smart-telicom-300x182.webp" alt="" style="width: 100%; height: auto;">
-                    <p class="three_nepali">
-                        <a href="">स्मार्ट टेलिकमबाट खोसियो ४ अर्बको फाइबर परियोजना</a>
-                    </p>
-                </div>
-                <div class="col-md-3">
-                    <img src="assets/img/smart-telicom-300x182.webp" alt="" style="width: 100%; height: auto;">
-                    <p class="three_nepali">
-                        <a href="">स्मार्ट टेलिकमबाट खोसियो ४ अर्बको फाइबर परियोजना</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- ListingPage closed -->
+            <?php
+        }
+
+    ?>
+
+   
     <!-- Video Open -->
     <div class="Video">
         <div class="container">
