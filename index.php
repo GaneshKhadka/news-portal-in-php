@@ -230,103 +230,95 @@
             <div class="row mt-3">
                 <div class="col-md-9">
                     <nav class="navbar navbar-light bg-light" style="border-radius: 20px;">
-                        <a class="navbar-brand" href="#"> State </a>
+                        <a class="navbar-brand" href="#">State</a>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
 
-                            <?php
+                            <?php 
                             $all = array_shift($state);
-                            // debug($all,true);
                                 foreach($state as $key => $state_name){
                                     ?>
-                            <a class="nav-item nav-link <?php echo $key == 'state1' ? 'active' : ''?>" id="nav-<?php echo $key; ?>-tab" data-toggle="tab" href="#nav-<?php echo $key ?>" role="tab" aria-controls="nav-<?php echo $key ?>" aria-selected="<?php echo $key == 'state1' ? true : false?>">
-                                <?php echo $state_name ?>
-                            </a>
-                            
-                            <?php
+
+                                    <a class="nav-item nav-link <?php echo $key == 'state1' ? 'active' : ''?>" id="nav-<?php echo $key; ?>-tab" data-toggle="tab" href="#nav-<?php echo $key;?>" role="tab" aria-controls="nav-<?php echo $key;?>" aria-selected="<?php echo $key == 'state1' ? true : false?>">
+                                        <?php echo $state_name?>
+                                    </a>
+                                    <?php
                                 }
                             ?>
-
+                           
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
-                        <?php 
-                            foreach($state as $key => $state_name) {
-                                $state_wise = $news->getStatewiseNews($key);
-                            // debug($state_wise,true);
-
-                                ?>
-                                 <div class="tab-pane fade <?php echo $key == 'state1' ? 'show active' : '' ?>" id="nav-<?php echo $key; ?>" role="tabpanel" aria-labelledby="nav-<?php echo $key ?>-tab">
-                                   <?php 
-                                    if($state_wise){
-                                        $first_state_news = array_shift($state_wise);
+                                <!-- 1.12 mins -->
+                                <?php
+                                    foreach($state as $key => $state_name){
+                                        $state_wise = $news->getStatewiseNews($key);
                                         ?>
-                                         <div class="row mt-3">
-                                                <div class="col-md-6">
-                                                    <a href="news.php?id=<?php echo $first_state_news->id; ?>">
-                                                       <?php 
-                                                       if(file_exists(UPLOAD_PATH.'/news/'.$first_state_news->image) && !empty($first_state_news->image)){
+                                        <div class="tab-pane fade <?php echo $key == 'state1' ? 'show active' : '' ?>" id="nav-<?php echo $key; ?>" role="tabpanel" aria-labelledby="nav-<?php echo $key;?>-tab">
+                                               <?php 
+                                                    if($state_wise){
+                                                        $first_state_news = array_shift($state_wise);
                                                         ?>
-                                                            <img src="<?php echo UPLOAD_URL.'/news/'.$first_state_news->image; ?>" style="width: 100%; height: auto;">
-        
+                                                         <div class="row mt-3">
+                                                    <div class="col-md-6">
+                                                        <a href="news.php?id=<?php echo $first_state_news->id; ?>">
                                                         <?php
-                                                    } else{
-                                                        ?>
-                                                        <img src="<?php echo ASSETS_IMAGES_URL.'/logo.png'; ?>" style="width: 100%; height: auto;">
-                                        
-                                                        <?php
-                                                    }
-                                                       ?>
-                                                    </a>
-                                                    <h1 class="nagdunga">
-                                                        <a href="news.php?id=<?php echo $first_state_news->id?>">
-                                                            <?php echo $first_state_news->title ?>
-                                                        </a></h1>
-                                                    <p><?php echo $first_state_news->summary ?></p>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="row">
-                                                        <?php 
-                                                            if($state_wise){
-                                                                foreach($state_wise as $news_list){
-                                                                    ?>
-                                                                    <div class="col-md-6">
-                                                                        <a href="news.php?id=<?php echo $news_list->id; ?>">
-                                                                            <?php
+                                                            if(file_exists(UPLOAD_PATH.'/news/'.$first_state_news->image) && !empty($first_state_news->image)){
+                                                                ?>
+                                                                     <img src="<?php echo UPLOAD_URL.'/news/'.$first_state_news->image; ?>" style="width: 100%; height: auto;">
+                                                                <?php
+                                                            } else { ?>
+                                                                 <img src="<?php echo ASSETS_IMAGES_URL.'/logo.png'; ?>" style="width: 100%; height: auto;">
+                                                        <?php } ?>    
+                                                        </a>
+                                                        <h1 class="nagdunga">
+                                                            <a href="news.php?id=<?php echo $first_state_news->id; ?>">
+                                                                <?php echo $first_state_news->title; ?>    
+                                                            </a>
+                                                        </h1>
+                                                        <p><?php echo $first_state_news->summary; ?></p>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="row">
+                                                            <?php 
+                                                                if($state_wise){
+                                                                    foreach($state_wise as $news_list){
+                                                                        ?>
+                                                                        <div class="col-md-6">
+                                                                            <a href="news.php?id=<?php echo $news_list->id; ?>">
+                                                                            <?php 
                                                                                 if(file_exists(UPLOAD_PATH.'/news/'.$news_list->image) && !empty($news_list->image)){
                                                                                     ?>
-                                                                                       <img src="<?php echo UPLOAD_URL.'/news/'.$news_list->image ?>" style="width: 100%; height: auto;">
+                                                                                <img src="<?php echo UPLOAD_URL.'/news/'.$news_list->image; ?>" style="width: 100%; height: auto;">
                                                                                     <?php
-                                                                                } else{
-                                                                                    ?>
-                                                                                         <img src="<?php echo ASSETS_IMAGES_URL.'/logo.png'; ?>" style="width: 100%; height: auto;">
-                                                                                    <?php
-                                                                                }
+                                                                                } else { ?>
+                                                                                <img src="<?php echo ASSETS_IMAGES_URL.'/logo.png'; ?>" style="width: 100%; height: auto;">
+                                                                                <?php }
                                                                             ?>
-                                                                        </a>
-                                                                        <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">
-                                                                            <a href="news.php?id=<?php echo $news_list->id ?>">
-                                                                                <?php echo $news_list->title ?>
+                                                                            </a>
+                                                                            <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">
+                                                                                <a href="news.php?id=<?php echo $news_list->id ?>">
+                                                                                <?php echo $news_list->title; ?>
                                                                             </a>
                                                                         </p>
-                                                                    </div>
-                                                                    <?php
+                                                                        </div>
+                                                                        <?php
+                                                                    }
                                                                 }
-                                                            }
-                                                        ?>
+                                                            ?>
+                                                        </div>
+                                                       
                                                     </div>
                                                 </div>
+                                                        <?php
+                                                    }else {
+                                                        echo "No news found.";
+                                                    }
+                                               ?>
                                             </div>
-                                                <?php
-                                            } else {
-                                                echo "No news found.";
-                                            }
-                                        ?>
-                                        </div>
-
-                                <?php
-                            }
-                        ?>
-
+                                        <?php
+                                    }
+                                ?>
+                       
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -376,7 +368,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
     <!-- देश Closed -->
     <!-- Listing_paage -->
     <div class="title_news">
