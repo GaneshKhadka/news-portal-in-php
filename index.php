@@ -248,7 +248,6 @@
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
-                                <!-- 1.12 mins -->
                                 <?php
                                     foreach($state as $key => $state_name){
                                         $state_wise = $news->getStatewiseNews($key);
@@ -321,50 +320,37 @@
                        
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <nav class="navbar navbar-light bg-primary" style="border-radius: 20px;">
-                        <a class="navbar-brand" href="#">ट्रेन्डिङ</a>
-                    </nav>
-                    <div class="row mt-3">
-                        <div class="col-md-2">
-                            <span style="text-align: center; font-weight: bold;">१.</span>
-                        </div>
+
+                <!-- Trending news -->
+                <!-- $news = new News; -->
+                <?php
+                    $trending_news = $news->getTrendingNews(0,5);
+                    if($trending_news){
+                        ?>
+                        <div class="col-md-3">
+                            <nav class="navbar navbar-light bg-primary" style="border-radius: 20px;">
+                                <a class="navbar-brand" href="#">Trending</a>
+                            </nav>
+                        <?php
+                        $i = 1;
+                        foreach($trending_news as $list_news){
+                            ?>
+                        <div class="row mt-3">
+                            <div class="col-md-2">
+                                <span style="text-align: center; font-weight: bold;"><?php echo $i++; ?></span>
+                            </div>
                         <div class="col-md-10">
-                            <p class="trends"><a href="#">स्थानीय तहका जनप्रतिनिधिलाई पारिश्रमिक नदिन सर्वोच्चको आदेश</a></p>
+                            <p class="trends"><a href="news.php?id=<?php echo $list_news->id; ?>"><?php echo $list_news->title; ?></a></p>
                         </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-md-2">
-                            <span style="text-align: center; font-weight: bold;">२.</span>
                         </div>
-                        <div class="col-md-10">
-                            <p class="trends"><a href="#">उमेर भैसक्यो साठी, झन् ठूला दुःखले घेरेको !</a></p>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-md-2">
-                            <span style="text-align: center; font-weight: bold;">३.</span>
-                        </div>
-                        <div class="col-md-10">
-                            <p class="trends"><a href="#">महावीरको राष्ट्रिय आविष्कार केन्द्रको उद्घाटन, के-के हुँदैछन् ‘आविष्कार’ ?</a></p>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-md-2">
-                            <span style="text-align: center; font-weight: bold;">४.</span>
-                        </div>
-                        <div class="col-md-10">
-                            <p class="trends"><a href="#">आलम पक्राउ कांग्रेसविरुद्धको षडयन्त्र : देउवा</a></p>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-md-2">
-                            <span style="text-align: center; font-weight: bold;">५.</span>
-                        </div>
-                        <div class="col-md-10">
-                            <p class="trends"><a href="#">महराको बयान अझै भएन, स्वास्थ्य समस्याले होः प्रहरी</a></p>
-                        </div>
-                    </div>
+                        <?php
+                        }
+                    }
+                ?>
+                
+                    
+                    
+                    
                 </div>
             </div>
         </div>

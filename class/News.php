@@ -46,4 +46,13 @@
             );
             return $this->select($args);
         }
+        public function getTrendingNews($start,$count){
+            $args = array(
+                'where' => array(
+                    "status" => 'active',
+                ),
+                'limit' => $start.", ".$count
+            );
+            return $this->select($args);
+        }
     }
