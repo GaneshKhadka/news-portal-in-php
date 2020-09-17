@@ -569,7 +569,72 @@
     </div>
 
     <!-- International close -->
+<!-- sports start -->
+<?php
+$category_news = $news->getCategoryWiseNews(4,0,1);
+                //   debug($category_news,true);
+    if($category_news){
+        $first_sport_news = array_shift($category_news);
+        ?>
+            <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <ul class="css-nav">
+                        <li><a href="category.php?id=4">Sports</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <a href="news.php?id=<?php echo $first_sport_news->id; ?>"><img src="<?php echo UPLOAD_URL.'/news/'.$first_sport_news->image; ?>" style="width: 100%; height: auto;"></a>
+                    <h1 class="nagdunga"><a href="news.php?id=<?php echo $first_sport_news->id; ?>"><?php echo $first_sport_news->title; ?></a></h1>
+                    <p><?php echo $first_sport_news->summary; ?></p>
+                </div>
+                <?php 
+                    $cat_news_sport_first = $news->getCategoryWiseNews(4,1,2);
+                    if ($cat_news_sport_first) {
+                        ?>
+                <div class="col-md-6">
+                    <div class="row">
+                        <?php 
+                            foreach($cat_news_sport_first as $cat_news_sport_left){
+                                ?>
+                                <div class="col-md-6">
+                                    <a href="news.php?id=<?php echo $cat_news_sport_left->id; ?>"><img src="<?php echo UPLOAD_URL.'/news/'.$cat_news_sport_left->image; ?>" style="width: 100%; height: auto;"></a>
+                                        <p style="padding-top: 20px; font-weight: 400; font-size: 16px;"><?php echo $cat_news_sport_left->title; ?></p>
+                                 </div>
+                                <?php
+                            }
+                        ?>
+                    </div>
+                    <div class="row mt-5">
+                        <?php
+                            $cat_news_sport_second = $news->getCategoryWiseNews(4,2,2); //category 4 ko index 2 dekhi 2 ota news
+                            if($cat_news_sport_second){
+                                foreach($cat_news_sport_second as $cat_news_sport_right){
+                                    ?>
+                                    <div class="col-md-6">
+                                        <a href="news.php?id=<?php echo $cat_news_sport_right->id; ?>"><img src="<?php echo UPLOAD_URL.'/news/'.$cat_news_sport_right->image; ?>" style="width: 100%; height: auto;"></a>
+                                        <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">
+                                            <?php echo $cat_news_sport_right->title; ?>
+                                        </p>
+                                    </div>
+                                    <?php
+                                }
+                            }
+                        ?>
+                    </div>
+                </div>
+                <?php
+                    } ?>
+            </div>
+        </div>
+        <?php
+    }
 
+
+?>
     <div class="container" style="margin-top: 20px">
         <div class="row">
             <div class="col-12">
@@ -577,56 +642,7 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <ul class="css-nav">
-                    <li><a href="#about">Sports</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col-md-6">
-                <a href="#"><img src="assets/img/Nagdhunga-JAm-2076-19-768x501.webp" style="width: 100%; height: auto;"></a>
-                <h1 class="nagdunga"><a href="#">नौबिसे-नागढुंगा सडकखण्डमा १० बजेदेखि ४ बजेसम्म एकतर्फी यातायात सञ्चालन</a></h1>
-                <p>२ कात्तिक, काठमाडौं । नौबिसे-नागढुंगा सडकखण्डमा यातायातका साधन एकतर्फी सञ्चालन गरिएको छ । धादिङको धुनिवेशी नगरपालिका ९ पिपलामोडभन्दा तल भूत घर, याक घर र टायल घर सडक खण्डमा कालोपत्रे...</p>
-            </div>
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-6">
-                        <a href="#"><img src="assets/img/mahila-sammelan-300x182.webp" style="width: 100%; height: auto;"></a>
-                    </div>
-                    <div class="col-md-6">
-                        <a href="#"><img src="assets/img/Pokhara-High-Court-300x150.webp" style="width: 100%; height: auto;"></a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">२० बुँदे घोषणापत्रसहित बेइजिङ समीक्षा सम्मेलन सम्पन्न</p>
-                    </div>
-                    <div class="col-md-6">
-                        <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">उच्च अदालत पोखराका न्यायाधीश शाही सेवाबाट बर्खास्त</p>
-                    </div>
-                </div>
-                <div class="row mt-5">
-                    <div class="col-md-6">
-                        <a href="#"><img src="assets/img/mahila-sammelan-300x182.webp" style="width: 100%; height: auto;"></a>
-                    </div>
-                    <div class="col-md-6">
-                        <a href="#"><img src="assets/img/Three-senior-officers-feliciatied-300x180.webp" style="width: 100%; height: auto;"></a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">सचिवको गुनासो : महिला आयोगको नेतृत्व मैले लिनुपरेको छ</p>
-                    </div>
-                    <div class="col-md-6">
-                        <p style="padding-top: 20px; font-weight: 400; font-size: 16px;">स्टाफ कलेजद्वारा प्रधानसेनापति र सशस्त्रका आईजीपी सम्मानित</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+   
     <!-- Video Closed -->
 
     <?php require_once 'inc/footer.php' ?>
