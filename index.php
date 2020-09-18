@@ -149,6 +149,7 @@
             <?php
                 if($category_news){
                     foreach($category_news as $cat_news){
+                        
                         ?>
                         <div class="col-md-3">
                             <img src="<?php echo UPLOAD_URL.'/news/'.$cat_news->image ?>" alt="" style="width: 100%; height: auto;">
@@ -346,11 +347,7 @@
                         <?php
                         }
                     }
-                ?>
-                
-                    
-                    
-                    
+                ?>                                                 
                 </div>
             </div>
         </div>
@@ -413,68 +410,64 @@
     ?>
 
    
-    <!-- Video Open -->
-    <div class="Video">
-        <div class="container">
-            <nav class="navbar navbar-light bg-dark" style="border-radius: 20px; margin-top: 10px;">
-                <a class="navbar-brand" href="#">भिडियो</a>
-            </nav>
-            <div class="row mt-3 pt-2" style="padding-bottom: 10px;">
-                <div class="col-md-8 col-sm-12">
-                    <iframe width="100%;" height="550px" src="https://www.youtube.com/embed/o6Y5JJViFG4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <p class="mt-3">
-                        <a href="">
-                            <h4>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            </h4>
-                        </a>
-                    </p>
-                    <hr>
-                </div>
-                <div class="col-md-4 col-sm-12">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <iframe width="100%;" height="auto" src="https://www.youtube.com/embed/l1VVBD5I4FM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <?php 
+        $videos = new Video;
+        $get_videos = $videos -> getVideos(0,4);
+        // debug($get_videos,true);
+        if($get_videos){
+            $get_first_videos = array_shift($get_videos);
+            ?>
+  <!-- Video Open -->
+        <div class="Video">
+                <div class="container">
+                    <nav class="navbar navbar-light bg-dark" style="border-radius: 20px; margin-top: 10px;">
+                        <a class="navbar-brand" href="#">Video</a>
+                    </nav>
+                    <div class="row mt-3 pt-2" style="padding-bottom: 10px;">
+                        <div class="col-md-8 col-sm-12">
+                            <iframe width="100%;" height="550px" src="https://www.youtube.com/embed/<?php echo $get_first_videos->video_id; ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             <p class="mt-3">
-                                <a href="">
+                                <a href="#">
                                     <h4>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                        <?php echo $get_first_videos->title;?>
                                     </h4>
                                 </a>
                             </p>
                             <hr>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <iframe width="100%" height="auto" src="https://www.youtube.com/embed/QHlsyY9Jpu8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            <p class="mt-3">
-                                <a href="">
-                                    <h4>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    </h4>
-                                </a>
-                            </p>
-                            <hr>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <iframe width="100%" height="auto" src="https://www.youtube.com/embed/H-ExNmHo2xI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            <p class="mt-3">
-                                <a href="">
-                                    <h4>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    </h4>
-                                </a>
-                            </p>
-                            <hr>
+                        <div class="col-md-4 col-sm-12">
+                            <?php 
+                                if($get_videos){
+                                    foreach($get_videos as $other_videos){
+                                        ?>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <iframe width="100%;" height="auto" src="https://www.youtube.com/embed/<?php echo $other_videos->video_id; ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <p class="mt-3">
+                                        <a href="">
+                                            <h4>
+                                                <?php echo $other_videos->title; ?>
+                                            </h4>
+                                        </a>
+                                    </p>
+                                    <hr>
+                                </div>
+                            </div>
+                                        <?php
+                                    }
+                                }
+                            ?>
+
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+            <?php
+        }
+
+    ?>
+
+  
     <div class="container" style="margin-top: 20px">
         <div class="row">
             <div class="col-6">

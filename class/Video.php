@@ -6,4 +6,13 @@
             parent::__construct();
             $this->table = "videos";
         }
+        public function getVideos($start,$count){
+            $args = array(
+                'where' => array(
+                    "status" => 'active'
+                ),
+                'limit' => $start.", ".$count
+            );
+            return $this->select($args);
+        }
     }
