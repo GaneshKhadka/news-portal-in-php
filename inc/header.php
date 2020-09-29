@@ -100,7 +100,7 @@
                 
                 <ul class="navbar-nav ">
                     <li class="nav-item">
-                        <a class="nav-link" href="./">Home</a>
+                        <a class="nav-link" href="./">होमपेज</a>
                     </li>
 
                     <?php
@@ -123,5 +123,5 @@
         </div>
     </nav>
     <!-- NavBar-closed -->
-
+    
     

@@ -1,6 +1,8 @@
 <?php 
     require_once 'config/init.php';
 
+    
+    
     $meta = array(
     //    'keywords' => '',
     //    'description' => '',
@@ -8,11 +10,14 @@
     );
 
     require_once 'inc/header.php';
+    
+    
     $news = new News;
     $featured_top = $news->getFeaturedNews(0,3);
     // debug($featured_top,true);
     if($featured_top){
         ?>
+       
             <div class="banner-news">
         <?php
         foreach($featured_top as $key => $list_news){
@@ -41,10 +46,10 @@
             <?php
         }
     }
-    ?>
+    ?>      
+ </div>
 
-      
-    </div>
+
 
     <div class="listing">
         <div class="container">
@@ -102,8 +107,9 @@
             </div>
         </div>
     </div>
-    <!-- Content Closed -->
+    <!-- Content Closed -->    
     
+
     <?php 
         $category_news = $news->getCategoryWiseNews(2, 0, 5);
         // debug($category_news,true); 

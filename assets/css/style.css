@@ -17,7 +17,7 @@
 
 .date_note {
     font-weight: 400;
-    font-size: 1em;
+    font-size: 1.5em;
     margin-right: 10px;
     color: rgba(0, 0, 0, .5);
     padding-left: 3em;
@@ -31,13 +31,14 @@
 
 .navbar-light .navbar-nav .nav-link {
     color: #fff;
-    font-size: 1em;
+    font-size: 1.5em;
     font-weight: 600;
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
-    color: red;
-    font-size: 1em;
+    /* color: red; */
+    color: #47a891;
+    font-size: 1.5em;
     font-weight: 600;
     background: #366584;
 }
